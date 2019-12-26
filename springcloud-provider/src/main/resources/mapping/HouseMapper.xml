@@ -17,7 +17,8 @@
         LEFT JOIN t_house_img thi ON thi.houseid=hinfo.hoseid
         left join t_user tu ON tu.userid=hinfo.userid
         left JOIN t_user_info tui ON tui.userid=tu.userid
-                limit 0,9
+        ORDER BY hinfo.housegrade DESC
+        limit 0,9
     </select>
 
    <select id="queryHouse2" resultType="com.jk.model.Houses">
@@ -34,6 +35,7 @@
         LEFT JOIN t_house_img thi ON thi.houseid=hinfo.hoseid
         left join t_user tu ON tu.userid=hinfo.userid
         left JOIN t_user_info tui ON tui.userid=tu.userid
+        ORDER BY hinfo.housegrade DESC
         where hinfo.status = 2
     </select>
 
