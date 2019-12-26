@@ -17,7 +17,7 @@
         LEFT JOIN t_house_img thi ON thi.houseid=hinfo.hoseid
         left join t_user tu ON tu.userid=hinfo.userid
         left JOIN t_user_info tui ON tui.userid=tu.userid
-        ORDER BY hinfo.housegrade DESC
+        /*ORDER BY hinfo.housegrade DESC*/
         limit 0,9
     </select>
 
@@ -35,7 +35,7 @@
         LEFT JOIN t_house_img thi ON thi.houseid=hinfo.hoseid
         left join t_user tu ON tu.userid=hinfo.userid
         left JOIN t_user_info tui ON tui.userid=tu.userid
-        ORDER BY hinfo.housegrade DESC
+        /*ORDER BY hinfo.housegrade DESC*/
         where hinfo.status = 2
     </select>
 
