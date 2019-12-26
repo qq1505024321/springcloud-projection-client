@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.CollecMapper" >
+
+
+
+  <!--收藏-->
+  <insert id="collecUserHouse">
+    insert into t_user_collec(userid,houseid,houseimg) values (#{userid},#{houseid},#{ketingimgurl})
+  </insert>
+
+  <!--取消收藏-->
+  <delete id="cancelCollectHouse">
+    delete from t_user_collec where userid = #{userid} and houseid = #{houseid}
+  </delete>
+
+
+    <!--收藏信息展示-->
+    <select id="">
+        SELECT hinfo.*,house.housenam,ths.houseshow,thp.dayprice,tu.username,tht.` housetype` housetypes,tbt.bedtypename,thl.leasetype leasetypes FROM
+
+				t_houseinfo hinfo
+        left JOIN  t_house house ON hinfo.hoseid=house.houseid
+				LEFT join t_house_type tht ON hinfo.housetypeid=tht.` housetypeid`
+				LEFT JOIN t_bed_type tbt ON hinfo.bedtypeid=tbt.bedtypeid
+				LEFT JOIN t_house_leasetype thl ON thl.typeid=hinfo.leasetype
+
+        left JOIN t_house_show ths ON house.houseid = ths.houseid
+
+        LEFT join t_housepricerule thp ON house.houseid = thp.hourseid
+        left JOIN t_user_house tuh ON tuh.houseid=house.houseid
+        left join t_user tu ON tu.userid=tuh.userid
+    </select>
+
+
+    <!--查看收藏房子的图片-->
+    <select id="findUserCollecHouseImg" resultType="com.jk.model.UserCollec">
+        select houseimg,houseid from t_user_collec where userid= #{userid};
+    </select>
+
+    <!--个人中心树展示-->
+    <select id="queryCentreKistMenuPid" resultType="com.jk.model.Menus">
+        select * from t_menus where pid = #{pid}
+    </select>
+
+    <!--前台房东页面展示树-->
+    <!--<select id="queryFrontMenuListByPid" resultType="com.jk.model.FrontMenu">
+        select * from t_front_menu where pid = #{pid}
+    </select>-->
+
+</mapper>

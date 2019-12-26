@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<title>手机注册-小猪</title><link rel="stylesheet" type="text/css" href="static/css/xzcss-globalloginWebPagejquery-u.css">
+</head>
+<body>
+<div class="xz-bg" style="background-image:url(https://image.xiaozhustatic3.com/00,1600,700/s,3,7Vvm,1600,700,2,c5acc686.jpg)">
+    <img src="static/picture/s,3,7Vvm,1600,700,2,c5acc686.jpg">
+</div>
+<div>
+    <div class="head_bar">
+        <div class="head_bar_con">
+            <a href="index.html" class="logo_index">小猪</a>
+            <span class="slogan_v2">居住自由主义</span>
+        </div>
+    </div>
+    <div class="r_mask"></div>
+    <div class="logindiv">
+    <!--<div class="layer"></div>-->
+	<div class="loginbox">
+	<div class="w_698 login_register_box " style="display:none;" id="registerDialog">
+    <div class="r_colsed" id="closeRegiserDialog"><span></span></div>
+    <div class="clearfix">
+        <div class="r_main_l">
+            <ul class="r_tab1 clearfix">
+                <li class="fl cur">注册小猪账号</li>
+                            </ul>
+            <ul class="register_list">
+                <li>
+                    <div class="h_30">&nbsp;</div>
+
+                    <div class="pr" id="reg">
+                        <div class=" r_telepho_ico"></div>
+                        <input type="text" id="input-mobile" autocomplete="off" placeholder="手机号" class="r_input_small col_input" value="">
+                </div></li>
+                <li>
+                    <div class="h_30">
+                        <p class="r_error_tip" id="input-mobile-tip">请输入手机号</p>&nbsp;
+                    </div>
+                    <!--<div class="pr">-->
+                        <!--<div class="r_pho_ico"></div>-->
+                        <!--<input type="text" placeholder="图片验证码" id="reg-image-code" autocomplete="off" class="r_input_small">-->
+                        <!--<span class="r_code"><img class="change-verify-image" id="img_imagecode" title="点击更换验证码" width="101" height="33" /></span>-->
+                    <!--</div>-->
+                </li>
+                <li>
+                    <!--<div class="h_30">-->
+                        <!--<p class="r_error_tip" id="reg-image-code-tip">请输入图片验证码</p>&nbsp;-->
+                    <!--</div>-->
+                    <div class="pr">
+                        <div class="r_num_ico"></div>
+                        <input id="invitecode" type="text" autocomplete="off" placeholder="邀请码(选填)" class="r_input_1">
+                    </div>
+                    <div class="h_30" style="display:none;">
+                        <p id="input-invitecode-tip" class="r_error_tip">邀请码输入有误</p>&nbsp;
+                    </div>
+                    <p class="col_fgray r_tip_text">使用朋友给您的邀请码注册后，你们均可获得300元</p>
+                </li>
+               <li>
+                  <div id="safeCheck"></div>
+                  <p id="input-slidecode-tip" class="r_error_tip input-slidecode-tip" style="margin-bottom: 10px">请进行验证</p>
+               </li>
+            </ul>
+            
+            <a href="javascript:;" id="reg-btn" class="r_input">立即注册</a>
+            <p class="mt_20">
+                <span class="check_css3 agreeResBox">
+                    <input type="checkbox" class="input_check" id="check3">
+                    <label for="check3"></label>
+                </span>
+                我同意  <a href="service.html" class="r-service-protocol" target="_blank">《服务协议》、</a><a href="privacy.html" class="r-service-protocol" target="_blank">《隐私保护声明》</a></p>
+        </div>
+        <div class="r_main_r">
+            <h5>合作网站账户登录</h5>
+<ul class="r_wedsitev1">
+    <li>
+    <a class="hz_qqv1" href="xzweb-getopensnsauthurl_qqzone_l"><i></i>QQ登录</a>
+    </li>
+    <li>
+    <a class="hz_weibov1" href="xzweb-getopensnsauthurl_sinaweib"><i></i>微博登录</a>
+    </li>
+    <li>
+    <a class="hz_weixinv1" href="xzweb-getopensnsauthurl_weixinop"><i></i>微信登录</a>
+    </li>
+</ul>            <p class="">已有账号？<a href="login-http3a2f2fwww.xiaozhu.com2.html" id="loginDialogBtn" class="col_pink logindialog">登录&gt;&gt;</a></p>
+        </div>
+        <div class="r_main_r r_main_qrcode_box">
+          <div class="inner-box">
+            <img class="applet-qrcode" src="static/picture/loginCode.png" alt="">
+            <span class="text-box">
+              <span>微信扫码领950元</span>
+              <span>无需下载APP</span>
+            </span>
+          </div>
+        </div>
+    </div>
+</div>
+<div class="w_400 login_register_box" id='mobileRegisterInfoDialog' style="display:none;"> 
+    <div class="r_colsed" id="closeMobileRegisterInfoDialog"><span></span></div>
+    <div class="r_top_tit">
+        <h6>验证短信已发送至手机号码</h6>
+        <p><span id="codeRecivePhone"></span><span class="col_pink"><a href="javascript:;" id="modifyRegisterBtn">(修改)</a></span></p>
+    </div>
+    <ul class="register_list">
+        <li>
+            <div class="h_30">&nbsp;</div>
+            <div class="pr">
+                <div class="r_pho_ico"></div>
+                <input type="text" id="activate-code" placeholder="手机验证码" autocomplete="off" class="r_input_small">
+                <a href="javascript:;" id="get-code-btn" class="have-nb">重新发送</a>
+            </div>
+        </li>
+        <li>
+            <div class="h_30">
+                <p id="activate-code-tip" class="r_error_tip">请输入手机验证码</p>&nbsp;
+            </div>
+            <div class="pr">
+                <div class=" r_tel_ico"></div>
+                <input id="reginput-username" type="text" placeholder="用户名" autocomplete="off" class="r_input_1">
+            </div>
+        </li>
+        <li>
+            <div class="h_30">
+                <p class="r_error_tip" id="reginput-username-tip">请输入用户名</p>&nbsp;
+            </div>
+            <div class="pr">
+                <div class="r_password_ico"></div>
+                <input type="password" id="regpassword" placeholder="密码" autocomplete="off" class="r_input_1">
+            </div>
+            <div class="h_30">
+                <p class="r_error_tip" id="regpassword-tip">请输入密码</p>&nbsp;
+            </div>
+        </li>
+    </ul>
+    <a href="javascript:;" id="regConfirmBtn" class="r_input mt_10">确认</a>
+</div>
+<div id="regSuccessDialog" class="reg_success_box login_register_box" style="display:none;">
+    <div class="">
+        <div class="r_colsed_1" id="closeRegSuccDialogBtn"><span></span></div>
+        <div id="regSuccInfo">
+        </div>
+    </div>
+</div>	</div>
+</div></div>
+<input type='hidden' id="next" name="next" value="http://www.xiaozhu.com/"><input type='hidden' id="createfrom" name="createfrom" value="">
+<input type='hidden' id="comefrom" name="comefrom" value="">
+<input type='hidden' id="referrer" name="referrer" value="">
+<input type='hidden' id="actionName" name="actionName" value="Front_Register">
+<input type='hidden' id="reqactionname" name="reqactionname" value="Front_Register">
+<input type='hidden' id="countryname" name="countryname" value="">
+<input type='hidden' id="countrycode" name="countrycode" value="">
+<input type='hidden' id="countryflag" name="countryflag" value="">
+
+<input type="hidden" name="xz_srf_token" id="xz_srf_token" value="2982b726deea1617eb82514eb68e4f6d">
+
+ 
+
+<script type="text/javascript" src="static/js/xzjs-Footer_LoginRegister_www.xi.js"></script> 
+<script type="text/javascript" src="static/js/xzjs-Front_Register_www.xiaozhu..js"></script>
+</body>
+<!-- Google Tag Manager -->
+<!-- End Google Tag Manager --></html>

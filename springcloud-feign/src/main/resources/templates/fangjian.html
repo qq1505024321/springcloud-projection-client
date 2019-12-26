@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入layui的js、css-->
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <script src="../layui/layui.all.js"></script>
+    <!--引入jquery-->
+    <script src="../layui/jquery.min.js"></script>
+</head>
+<body>
+<input type="hidden" th:value="${session.loginUser.userid}" id="userid">
+
+<table id="demo" lay-filter="test"></table>
+
+</body>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        layui.use('table', function(){
+            var table = layui.table;
+            //第一个实例
+            table.render({
+                elem: '#demo'
+                ,url: '../test/findFangjianById?userid='+$("#userid").val() //数据接口
+                ,page: true //开启分页
+                ,limits: [10,20,30,40,50]
+                ,limit: 10 //每页默认显示的数量
+                ,cols: [
+                    [ //表头
+                        {type:'checkbox'},
+                        {field: 'hoseid', title: '房间编号', width:'10%', align: 'center'}
+                        ,{field: 'houseadderss', title: '房源地址', width:'10%', align: 'center'}
+                        ,{field: 'roomnum', title: '房间个数', width:'10%', align: 'center'}
+                        ,{field: 'hallnum', title: '客厅个数', width:'10%', align: 'center'}
+                        ,{field: 'leasetypes', title: '出租类型', width:'15%', align: 'center'}
+                        ,{field: 'bednum', title: '床位个数', width:'10%', align: 'center'}
+                        ,{field: 'dayprice', title: '日租', width:'10%', align: 'center'}
+                        ,{field: 'act', title: '操作', width:'20%', align: 'center',
+                        templet:function (value) {
+                            return "<button type='button' class='layui-btn layui-btn-sm' onclick='deleteUser("+value.userid+")'>删除</button>  <button type='button' class='layui-btn layui-btn-sm' onclick='updata("+value.userid+")'>修改</button>";
+                        }
+                    }
+                    ]
+                ]
+            });
+        });
+
+    })
+
+
+</script>
+</html>

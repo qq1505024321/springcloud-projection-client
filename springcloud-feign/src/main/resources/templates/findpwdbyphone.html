@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<title>手机找回密码-小猪</title><link rel="stylesheet" type="text/css" href="static/css/xzcss-globalloginWebPagejquery-u.css">
+</head>
+<body>
+<div class="xz-bg" style="background-image:url(https://image.xiaozhustatic3.com/00,1600,700/s,3,7Vv2,1600,700,2,729d067c.jpg)">
+    <img src="static/picture/s,3,7Vv2,1600,700,2,729d067c.jpg">
+</div>
+<div>
+    <div class="head_bar">
+        <div class="head_bar_con">
+            <a href="index.html" class="logo_index">小猪</a>
+            <span class="slogan_v2">居住自由主义</span>
+        </div>
+    </div>
+    <div class="r_mask"></div>
+    <div class="loginbox" style="display:none">
+        <div class="w_400_1 clearfix"> 
+            <p class="f_18 tc">找回密码</p>
+            <ul class="register_list">
+                <li>
+                    <div class="h_30">&nbsp;</div>
+                    <div class="pr">
+                        <div class="r_telepho_ico"></div>
+                        <input type="text" class="r_input_small" id="input-mobile" autocomplete="off" placeholder="手机号">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="h_30">
+                            <div class="r_error_tip" id="input-mobile-tip"><span class="icon-ok"></span></div>
+                        </div>
+                        <div class="pr">
+                            <div class="r_pho_ico"></div>
+                            <input type="text" class="r_input_small" id="image-verify-code" autocomplete="off" placeholder="图片验证码">
+                            <span class="r_code"><img class="change-verify-image" src="static/picture/ajax-AJAX_PicCheckCodeShow_15762.jpg" width="101px" height="33px" id="img_imagecode" title="点击更换验证码"></span>
+                        </div>
+                        <div class="h_30">
+                            <div class="r_error_tip" id="image-verify-code-tip"></div>
+                        </div>
+                    </li>
+            </ul>
+            <a href="#" class="r_input mt_10" id="get-code-btn">立即找回</a>
+            <a href="javascript:;" class="col_pink fr marginT10">使用邮箱找回&gt;&gt;</a>
+        </div>
+
+        <div class="w_400_1" style="display:none" id="findpasswordmobile2"> 
+            <p class="f_18 tc">设置新密码</p>
+            <div class="r_top_tit h_30">
+                <h6>验证短信已发送至手机号码</h6>
+                <p><span id="mobilePhone"></span><span class="col_pink"><a href="#" onclick="retransmit()">(修改)</a></span></p>
+            </div>
+            <ul class="register_list">
+                <li>
+                    <div class="h_30">
+                        <p style="display:none;" class="r_error_tip">请输入手机号</p>&nbsp;
+                    </div>
+                    <div class="pr">
+                        <div class="r_pho_ico"></div>
+                        <input type="text" class="r_input_small" autocomplete="off" id="activate-code" placeholder="手机验证码">
+                        <span class="have-nb" id="quick-get-code-btn">重新发送</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="h_30">
+                        <div class="r_error_tip" id="activate-code-tip"><span class="icon-ok"></span></div>
+                    </div>
+                    <div class="pr">
+                        <div class="r_password_ico"></div>
+                        <input class="r_input_1" type="password" id="regpassword" onpaste="return false" oncontextmenu="return false" oncopy="return false" oncut="return false" autocomplete="off" placeholder="新密码">
+                    </div>
+                     <div class="h_30">
+                         <div id="regpassword-tip" class="r_error_tip"></div>    
+                    </div>
+                </li>
+            </ul>
+            <a href="#" class="orgbtn r_input mt_10" id="pwdmoile-btn">完成</a>
+        </div>
+</div>
+      </div>
+<input type='hidden' id="createfrom" name="createfrom" value="">
+<input type='hidden' id="comefrom" name="comefrom" value="">
+<input type='hidden' id="referrer" name="referrer" value="">
+<input type='hidden' id="actionName" name="actionName" value="Front_FindPwd_ByPhone">
+<input type='hidden' id="reqactionname" name="reqactionname" value="Front_FindPwd_ByPhone">
+<input type='hidden' id="countryname" name="countryname" value="">
+<input type='hidden' id="countrycode" name="countrycode" value="">
+<input type='hidden' id="countryflag" name="countryflag" value="">
+
+<input type="hidden" name="xz_srf_token" id="xz_srf_token" value="2982b726deea1617eb82514eb68e4f6d">
+
+ 
+
+<script type="text/javascript" src="static/js/xzjs-Footer_LoginRegister_www.xi.js"></script> 
+<script type="text/javascript" src="static/js/xzjs-Front_FindPwd_ByPhone_www.x.js"></script>
+</body>
+<!-- Google Tag Manager -->
+<!-- End Google Tag Manager --></html>

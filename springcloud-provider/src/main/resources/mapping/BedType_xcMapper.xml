@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.BedType_xcMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.model.BedType_xc" >
+    <id column="bedtypeid" property="bedtypeid" jdbcType="INTEGER" />
+    <result column="bedtypename" property="bedtypename" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="findBedType" resultMap="BaseResultMap">
+    select * from t_bed_type
+  </select>
+</mapper>

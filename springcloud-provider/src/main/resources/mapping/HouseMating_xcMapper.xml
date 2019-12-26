@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.HouseMating_xcMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.model.HouseMating_xc" >
+    <id column="housematingid" property="housematingid" jdbcType="INTEGER" />
+    <result column="houseid" property="houseid" jdbcType="INTEGER" />
+    <result column="bathroom" property="bathroom" jdbcType="VARCHAR" />
+    <result column="electric" property="electric" jdbcType="VARCHAR" />
+    <result column="facility" property="facility" jdbcType="VARCHAR" />
+    <result column="especially" property="especially" jdbcType="VARCHAR" />
+    <result column="receptionsex" property="receptionsex" jdbcType="INTEGER" />
+    <result column="askfor" property="askfor" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="addHousemating" parameterType="com.jk.model.HouseMating_xc" >
+    insert into t_house_mating (bathroom,houseid,
+      electric, facility, especially, 
+      receptionsex, askfor)
+    values (#{bathroom},#{houseid},
+      #{electric}, #{facility}, #{especially},
+      #{receptionsex}, #{askfor})
+  </insert>
+</mapper>

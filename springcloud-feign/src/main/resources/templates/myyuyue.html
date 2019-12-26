@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入layui的js、css-->
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <script src="../layui/layui.all.js"></script>
+    <!--引入jquery-->
+    <script src="../layui/jquery.min.js"></script>
+</head>
+<body>
+<input type="hidden" th:value="${session.loginUser.userid}" id="userid">
+
+<table id="demo" lay-filter="test"></table>
+
+</body>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        layui.use('table', function(){
+            var table = layui.table;
+            //第一个实例
+            table.render({
+                elem: '#demo'
+                ,url: '../test/findYuYueById?userid='+$("#userid").val() //数据接口
+                ,page: true //开启分页
+                ,limits: [10,20,30,40,50]
+                ,limit: 10 //每页默认显示的数量
+                ,cols: [
+                    [ //表头
+                        {type:'checkbox'},
+                        {field: 'houseid', title: '房间编号', width:'10%', align: 'center'}
+                        ,{field: 'duepeoplename', title: '预约人名称', width:'10%', align: 'center'}
+                        ,{field: 'duetopeoplephone', title: '预约人手机', width:'10%', align: 'center'}
+                        ,{field: 'totalprices', title: '房间总价', width:'10%', align: 'center'}
+                        ,{field: 'realname', title: '住宿人员名称', width:'15%', align: 'center'}
+                        ,{field: 'realphone', title: '住宿人员手机号', width:'10%', align: 'center'}
+                        ,{field: 'act', title: '操作', width:'20%', align: 'center',
+                        templet:function (value) {
+                            return "<button type='button' class='layui-btn layui-btn-sm' onclick='deleteUser("+value.userid+")'>删除</button>  <button type='button' class='layui-btn layui-btn-sm' onclick='updata("+value.userid+")'>修改</button>";
+                        }
+                    }
+                    ]
+                ]
+            });
+        });
+
+    })
+
+
+</script>
+</html>

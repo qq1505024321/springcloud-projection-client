@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.HousePrice_xcMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.model.HousePrice_xc" >
+    <id column="housepriceid" property="housepriceid" jdbcType="INTEGER" />
+    <result column="dayprice" property="dayprice" jdbcType="INTEGER" />
+    <result column="homesales" property="homesales" jdbcType="INTEGER" />
+    <result column="cashpledge" property="cashpledge" jdbcType="INTEGER" />
+    <result column="transactionrules" property="transactionrules" jdbcType="INTEGER" />
+    <result column="unsubscriberules" property="unsubscriberules" jdbcType="INTEGER" />
+    <result column="minimumdays" property="minimumdays" jdbcType="INTEGER" />
+    <result column="maxdays" property="maxdays" />
+    <result column="foreigners" property="foreigners" jdbcType="INTEGER" />
+    <result column="otherrequirements" property="otherrequirements" jdbcType="VARCHAR" />
+    <result column="houseid" property="houseid" jdbcType="INTEGER" />
+    <result column="cleaningfee" property="cleaningfee" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="addHouseprice" parameterType="com.jk.model.HousePrice_xc" >
+    insert into t_house_price (dayprice, homesales,
+      cashpledge, transactionrules, unsubscriberules, 
+      minimumdays, maxdays, foreigners, 
+      otherrequirements, houseid, cleaningfee
+      )
+    values (#{dayprice}, #{homesales},
+      #{cashpledge}, #{transactionrules}, #{unsubscriberules},
+      #{minimumdays}, #{maxdays}, #{foreigners},
+      #{otherrequirements}, #{houseid}, #{cleaningfee}
+      )
+  </insert>
+
+  <select id="findhouseprice" resultMap="BaseResultMap">
+    select * from t_house_price where houseid = ${houseid}
+  </select>
+</mapper>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+
+
+    <title>发布房源页面</title><meta http-equiv="Cache-Control" content="no-transform ">
+    <meta http-equiv="mobile-agent" content="format=html5; url=https://m.xiaozhu.com/j/hongkong/fangzi/455998401">
+    <script src="../js/tingyun-rum.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/xzcss-globalpagesuggestjquery-ui.css">
+    <!--引入layui的js、css-->
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <script src="../layui/layui.all.js"></script>
+    <!--引入jquery-->
+    <script src="../layui/jquery.min.js"></script>
+
+
+
+
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="../js3/jquery-1.9.1.min.js"></script>
+    <!-- 引入bootstrap的css、js -->
+    <link rel="stylesheet" href="/js3/bootstrap3/css/bootstrap.css">
+    <script type="text/javascript" src="/js3/bootstrap3/js/bootstrap.js"></script>
+    <!-- 引入tree的js、css -->
+    <link rel="stylesheet" href="/js3/bootstrap-treeview/bootstrap-treeview.min.css">
+    <script type="text/javascript" src="/js3/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入选项卡的js、css -->
+    <link rel="stylesheet" href="/js3/bootStrap-addTabs/bootstrap.addtabs.css">
+    <script type="text/javascript" src="/js3/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+    <!-- 引入table的css、js -->
+    <link rel="stylesheet" href="/js3/bootstrap-table/bootstrap-table.css">
+    <script type="text/javascript" src="/js3/bootstrap-table/bootstrap-table.js"></script>
+    <script type="text/javascript" src="/js3/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- 引入删除提示框 -->
+    <script type="text/javascript" src="/js3/bootbox/bootbox.min.js"></script>
+
+    <!-- 引入文件上传的css、js -->
+    <link rel="stylesheet" href="/js3/bootstrap-fileinput/css/fileinput.css">
+    <script type="text/javascript" src="/js3/bootstrap-fileinput/js/fileinput.js"></script>
+    <script type="text/javascript" src="/js3/bootstrap-fileinput/js/locales/zh.js"></script>
+    <style type="text/css">
+        .myrow{
+            margin-bottom:10px
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="../css/xzcss-houseHoverrealNamePopjquer.css">
+<div class="o_mask" id='maskName' style="display:none;"></div>
+<div class="detail_wrapper">
+    <div class="detail_head clearfix">
+        <a href="index.html" class="xz_logo_detail">小猪</a><span class="slogan_v2 slogan_black"></span>
+        <ul class="nav_R nav_commen">
+            <li><a rel="nofollow" href="" class="btn_free show-register-box" id="Pub_Btn">发布房源</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<!--/subNav-->
+
+<form id="addFormBynext">
+
+<div class="layui-row" style="margin-left: 380px;width: 950px;height: 100%;background-color: white;margin-top: 20px">
+    <!--房源地址-->
+    <div class="layui-col-md12">
+        <h3 style="margin-left: 10px;margin-top: 20px;color: #1aaa88">房源照片</h3>
+        <hr>
+        <div style="margin-left: 50px;margin-bottom: 20px;margin-top: 20px">
+        <font size="4" color="red">请不要上传修改痕迹明显、拉伸变形、有水印、有联系方式或品牌宣传等内容的照片。</font>
+        </div>
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 50px;margin-top: 20px">卧室：</h3>
+            </div>
+            <br>
+            <div class="layui-col-md8" style="margin-top: 5px;margin-bottom: 20px">
+            <font size="2">根据你填写的户型和床铺信息，须上传卧室和床铺的照片。请确保床单、枕头展示齐全。</font>
+                <br><br>
+
+                    <div class="row myrow">
+                        <div class="col-md-10" >
+                            <input type="hidden" id="testimgs" name="woshiimgurl" />
+                            <input type="file"  class="projectfile"  name="imgg" id="headImgs">
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+
+
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 50px;margin-top: 25px">客厅：</h3>
+            </div>
+            <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+
+                <font size="2">根建议上传。站在厅角拍摄，视野会更广。</font>
+                <br><br>
+                    <div class="row myrow">
+                        <div class="col-md-10" >
+                            <input type="hidden" id="testimg" name="ketingimgurl" />
+                            <input type="file"  class="projectfile"  name="imgg" id="headImg">
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+
+
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 50px;margin-top: 25px">卫生间：</h3>
+            </div>
+            <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                <font size="2">上传卫生间照片。请确保马桶卫浴、地面细节完整。</font>
+                <br><br>
+                <div class="row myrow">
+                    <div class="col-md-10" >
+                        <input type="hidden" id="testimg3" name="wsjimgurl" />
+                        <input type="file"  class="projectfile"  name="imgg" id="headImgs3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 50px;margin-top: 25px">厨房：</h3>
+            </div>
+            <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                <font size="2">上传厨房照片</font>
+                <br><br>
+                <div class="row myrow">
+                    <div class="col-md-10" >
+                        <input type="hidden" id="testimg5" name="chufangimgurl" />
+                        <input type="file"  class="projectfile"  name="imgg" id="headImg5">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 50px;margin-top: 25px;margin-bottom: 20px">其他：</h3>
+            </div>
+            <div class="layui-col-md8" style="margin-top: 25px">
+                <font size="2">可以是其他室内空间、物件、小区周边环境等。更多的照片往往能吸引更多的房客。</font>
+                <br><br>
+                <div class="row myrow">
+                    <div class="col-md-10" >
+                        <input type="hidden" id="testimg6" name="qitaimgurl" />
+                        <input type="file"  class="projectfile"  name="imgg" id="headImg6">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="layui-row" style="margin-left: 380px;margin-top: 20px">
+    <button type="button"   onclick="addHousemating()" class="layui-btn layui-btn-radius layui-btn-primary"  style="background-color: rgba(255,48,35,1);color: white">保存并继续</button>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="foot_v2">
+    <ul class="foot_ul">
+        <li><a class="guide" href="xzweb-help_userguide_tenant.html" target="_blank">房客指南</a></li>
+        <li><a class="guide icon_fk" href="xzweb-help_userguide_landlord.html" target="_blank">房东指南</a></li>
+        <li>
+            <span class="guide_T">关于我们</span>
+            <a href="aboutus.html" target="_blank">关于小猪</a>
+            <a href="javascript:;" target="_blank">加入我们</a>
+            <a href="contactus.html" target="_blank">联系我们</a>
+        </li>
+        <li>
+            <span class="guide_T">网站帮助</span>
+            <a href="index5.html" target="_blank">帮助中心</a>
+            <a href="sitemap.html" target="_blank">网站地图</a>
+        </li>
+        <li class="width_280">
+            <span class="guide_T">网站协议</span><br>
+            <a href="service.html" target="_blank">服务协议</a>
+            <a href="landlordrule.html" target="_blank">房东规则</a>
+            <a href="tenantrule.html" target="_blank">房客规则</a>
+            <a href="auditrule.html" target="_blank">房源上线标准</a>
+            <a href="privacy.html" target="_blank">隐私保护</a>
+            <a href="copyright.html" target="_blank">版权声明</a>
+            <a href="disclaimer.html" target="_blank">免责声明</a>
+            <a href="intellectualproperty.html" target="_blank">知识产权声明</a>
+            <a href="commentrule.html" target="_blank">点评发布规则</a>
+            <a href="japanreservationrule.html" target="_blank">日本标准住宅宿泊仲介业约款</a>
+        </li>
+        <li class="bigFont online_kf">
+            <span class="logindialog"><i></i>在线客服</span>
+            <p>客服电话  400 - 010 - 7890</p>
+            <p>客服邮箱  service@xiaozhu.com</p>
+        </li>
+    </ul>
+    <dl class="link_dl">
+        <dt>城市导航</dt>
+        <dd>
+            <a target="_blank" href="index1.html">北京短租房</a>
+            <a target="_blank" href="index6.html">上海短租房</a>
+            <a target="_blank" href="index7.html">南京短租房</a>
+            <a target="_blank" href="index2.html">成都短租房</a>
+            <a target="_blank" href="index8.html">广州短租房</a>
+            <a target="_blank" href="index4.html">重庆短租房</a>
+            <a target="_blank" href="index9.html">武汉短租房</a>
+            <a target="_blank" href="index10.html">大连短租房</a>
+            <a target="_blank" href="index11.html">三亚短租房</a>
+            <a target="_blank" href="index12.html">丽江短租房</a>
+            <a target="_blank" href="index13.html">天津短租房</a>
+            <a target="_blank" href="index14.html">香港短租房</a>
+            <a target="_blank" href="index15.html">长沙短租房</a>
+            <a target="_blank" href="index16.html">无锡短租房</a>
+            <a target="_blank" href="index17.html">昆明短租房</a>
+            <a target="_blank" href="index18.html">济南短租房</a>
+            <a target="_blank" href="index19.html">厦门短租房</a>
+            <a target="_blank" href="index3.html">青岛短租房</a>
+            <a target="_blank" href="index20.html">郑州短租房</a>
+            <a target="_blank" href="index21.html">西安短租房</a>
+            <a target="_blank" href="index22.html">杭州短租房</a>
+            <a target="_blank" href="index23.html">深圳短租房</a>
+            <a target="_blank" href="index24.html">沈阳短租房</a>
+            <a target="_blank" href="index25.html">苏州短租房</a>
+        </dd>
+    </dl>
+    <dl class="link_dl">
+
+    </dl>
+    <div class="foot_btm">京ICP备12035936号-1 &nbsp;&nbsp;许可证号：京ICP证140510号 &nbsp;&nbsp; <a href="javascript:;" |="" name="mt8SMvYyRDI92b06nuDs8dPFapllCJYidqhM1WlOoGRZ9DWpbo" rel="nofollow" target="_blank">安全联盟</a> &nbsp;&nbsp; 北京快跑信息科技有限公司 &nbsp;&nbsp; <a href="files/yingye.jpg" |="" name="yingyezhizhao" rel="nofollow" target="_blank">营业执照号 103613118</a> <span style="display:none">  &nbsp;&nbsp; 地址：北京市海淀区知春路56号   &nbsp;&nbsp;电话：010-62961978</span>
+    </div>
+    <div style="margin:0 auto;color:#bdc3c7;">
+        <a target="_blank" href="javascript:;" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../picture/govRecord_icon.png"><p style="display:inline-block;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#bdc3c7;">京公网安备 11010802020380号</p></a>
+        &nbsp;&nbsp; 违法和不良信息举报电话：4000107890转6  &nbsp;&nbsp; 举报邮箱：jubao@xiaozhu.com
+    </div>
+</div>
+
+<input type="hidden" name="actionName" id="actionName" value="Front_Detail">
+<input type="hidden" name="xz_srf_token" id="xz_srf_token" value="2982b726deea1617eb82514eb68e4f6d">
+
+<!--/footer-->
+<input type='hidden' id='latitude' value="22.322386">
+<input type='hidden' id='longitude' value="114.18045">
+<input type='hidden' id='lodgeUnitId' value="455998401">
+<input type="hidden" id="bookUrl" value="http://www.xiaozhu.com/xz_web2/order/pages/lodger/order.html">
+<input type='hidden' id='landlordDiaryNum' value="0">
+<input type='hidden' id='imgCount' value="38">
+<input type='hidden' id='minDay' value="1">
+<input type='hidden' id='cityName' value="香港">
+<input type='hidden' id='getIfOversea' value="1">
+<input type='hidden' id='isAbroad' value="0">
+<input type='hidden' id='rule_A' value="30">
+<input type='hidden' id="rule_N" value="30">
+<input type='hidden' id="lodgeUnitCreateType" value="publish">
+<input type='hidden' id="nativeCity" value="香港">
+<input type="hidden" id="scriptUrl" value="//jci.xiaozhu..1.com/e19120600/xzjs?k=Front_Detail&httphost=hongkong.xiaozhu.com">
+<div class="mask" style="display:none;"></div>
+
+
+
+
+
+
+<div class="sharev2_mask"></div>
+</body>
+<script type="text/javascript">
+
+
+    addHousemating = function () {
+        var form = $("#addFormBynext").serialize()
+        $.ajax({
+            url:"../test/addHouseImg",
+            type:"post",
+            data:form,
+            success:function (data) {
+                location.href="../test/tohouseshenhe";
+            }
+        })
+    }
+
+    $(function () {
+        uploadImg();
+        uploadImgs();
+        uploadImgs3();
+        uploadImgs5();
+        uploadImgs6();
+    })
+    function uploadImg(url){
+        $('#headImg').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '/imgs/updaloadImg', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function(event, data, previewId, index) {
+
+            var imgval = $('#testimg').val();
+
+            if(imgval == null || imgval == "" || imgval == undefined){
+                imgval = data.response.responseText;
+            }/*else{
+			imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
+		}*/
+            $('#testimg').val(imgval);
+        });
+    }
+
+
+    function uploadImgs(url){
+        $('#headImgs').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '/imgs/updaloadImg2', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function(event, data, previewId, index) {
+
+            var imgval = $('#testimgs').val();
+
+            if(imgval == null || imgval == "" || imgval == undefined){
+                imgval = data.response.responseText;
+            }/*else{
+			imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
+		}*/
+            $('#testimgs').val(imgval);
+        });
+    }
+
+
+
+    function uploadImgs3(url){
+        $('#headImgs3').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '/imgs/updaloadImg3', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function(event, data, previewId, index) {
+
+            var imgval = $('#testimg3').val();
+
+            if(imgval == null || imgval == "" || imgval == undefined){
+                imgval = data.response.responseText;
+            }/*else{
+			imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
+		}*/
+            $('#testimg3').val(imgval);
+        });
+    }
+
+
+    function uploadImgs5(url){
+        $('#headImg5').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '/imgs/updaloadImg4', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function(event, data, previewId, index) {
+
+            var imgval = $('#testimg5').val();
+
+            if(imgval == null || imgval == "" || imgval == undefined){
+                imgval = data.response.responseText;
+            }/*else{
+			imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
+		}*/
+            $('#testimg5').val(imgval);
+        });
+    }
+
+
+
+    function uploadImgs6(url){
+        $('#headImg6').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '/imgs/updaloadImg5', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function(event, data, previewId, index) {
+
+            var imgval = $('#testimg6').val();
+
+            if(imgval == null || imgval == "" || imgval == undefined){
+                imgval = data.response.responseText;
+            }/*else{
+			imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
+		}*/
+            $('#testimg6').val(imgval);
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.HouseImg_xcMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.model.HouseImg_xc" >
+    <id column="imgid" property="imgid" jdbcType="INTEGER" />
+    <result column="woshiimgurl" property="woshiimgurl" jdbcType="VARCHAR" />
+    <result column="houseid" property="houseid" jdbcType="INTEGER" />
+    <result column="ketingimgurl" property="ketingimgurl" jdbcType="VARCHAR" />
+    <result column="wsjimgurl" property="wsjimgurl" jdbcType="VARCHAR" />
+    <result column="chufangimgurl" property="chufangimgurl" jdbcType="VARCHAR" />
+    <result column="qitaimgurl" property="qitaimgurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="addHouseImg" parameterType="com.jk.model.HouseImg_xc" >
+    insert into t_house_img (woshiimgurl, houseid,
+      ketingimgurl, wsjimgurl, chufangimgurl, 
+      qitaimgurl)
+    values (#{woshiimgurl}, #{houseid},
+      #{ketingimgurl}, #{wsjimgurl}, #{chufangimgurl},
+      #{qitaimgurl})
+  </insert>
+</mapper>

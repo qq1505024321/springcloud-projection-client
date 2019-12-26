@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="【小蜗-短租】日租,短租,租房,家庭公寓,自助公寓,家庭旅馆,旅游">
+    <meta name="description" content="【小蜗-短租】最可信、有保障的短租日租在线交易平台" />
+    <title>入住人管理-小蜗</title>
+
+    <meta name="alexaVerifyID" content="r9sOpqmyWotVR8P7fvPILomFMOs" />
+    <link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e19110803/xzcss?css=global,jquery-ui,manage,detail,userlist,slideBar" />
+    <!-- Bootstrap 插件 css -->
+    <link href="../js3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Bootstrap 核心css -->
+    <link href="../js3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap TreeView css -->
+    <link href="../js3/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+    <!-- Bootstrap addTabs css -->
+    <link href="../js3/bootStrap-addTabs/bootstrap.addtabs.css" rel="stylesheet">
+
+    <!-- Bootstrap table css -->
+    <link href="../js3/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker css -->
+    <link href="../js3/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+    <!-- bootstrap-dialog css -->
+    <link href="../js3/bootstrap-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
+    <!-- bootstrap-fileinput css -->
+    <link href="../js3/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div style="width: 550px;float: left">
+    <form id="updateform">
+        <h3><font color="green">基本信息</font></h3>
+        <div>
+            <font color="#a9a9a9">用户名:</font><span th:text='${yh.username}'></span><br>
+            <font color="#a9a9a9">手机号码:</font><span th:text='${yh.phone}'></span><br>
+            <font color="#a9a9a9">邮箱:</font><span th:text="${yh.email}"></span><br>
+        </div><br>
+        <h3><font color="green">身份信息</font>  &nbsp;&nbsp;
+            <font size="2px" color="#a9a9a9">仅用于必要的安全环节，其他情况下将为您严格保密
+            </font></h3>
+        <div>
+            <font color="#a9a9a9">真实姓名:</font><span th:text="${yh.truename}"></span><br/>
+            <font color="#a9a9a9">身份证:</font><span th:text="${yh.idcard}"></span>
+        </div><br>
+        <h3><font color="green">社交信息</font> &nbsp;&nbsp;
+            <font size="2px" color="#a9a9a9">越多的完善，越有助于在其他房东或者房客中产生信任</font></h3>
+        <div>
+            <font color="#a9a9a9">头像:</font><img th:src="${yh.img}" width="100px" height="100px"/><br>
+            <font color="#a9a9a9">性别:</font><span th:text="${yh.sex}"></span><br>
+            <font color="#a9a9a9">年龄:</font><span th:text="${yh.age}"></span><br>
+            <font color="#a9a9a9">家庭住址:</font><span th:text="${yh.address}"></span><br>
+            <font color="#a9a9a9">血型:</font><span th:text="${yh.bloodtype}"></span><br>
+            <font color="#a9a9a9">教育:</font><span th:text="${yh.education}"></span><br>
+            <font color="#a9a9a9">工作:</font><span th:text="${yh.works}"></span><br>
+            <!--<center>
+                <button type="button" class="btn btn-info" onclick="xiugai()">编辑信息</button>
+            </center>-->
+        </div>
+    </form>
+
+</div>
+
+<input type="hidden" name="actionName" id="actionName" value="FangKe_UserTenantList"/>
+<input type="hidden" name="xz_srf_token" id="xz_srf_token" value="867fc5e35f41ce556472c26a6d118f6e"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=Footer&httphost=www.xiaozhu.com"></script>
+<link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e19110803/xzcss?css=jquery.mCustomScrollbar,nyroModal,uploadify,shadepage" />
+<script type="text/javascript" src="../js/lazyload.js"></script>
+<script type="text/javascript" src="../js/xzim4.js?source=xiaozhu&dm=xiaozhu.com" id="webimSource"></script>
+
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=FangDong_Header&httphost=www.xiaozhu.com"></script>
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=FangKe_UserTenantList&httphost=www.xiaozhu.com"></script>
+
+<script type="text/javascript">
+
+    /*function xiugai(){
+        location.href="../img/toUpdateUserInfo";
+    }*/
+
+</script>
+
+</body>
+</html>

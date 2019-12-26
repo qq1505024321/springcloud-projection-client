@@ -1,0 +1,38 @@
+<-- 导入文件 -->
+<link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+<script type="text/javascript" src="jquery-ui/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+<link href="jquery-ui/style.css"></link>
+
+
+<script type="text/javascript">
+		/* $(function (){
+			//定义数组
+			var a = ["战狼2","战狼1","杀破狼·贪狼","狼牙","狼图腾","喜洋洋与灰太狼","变形金刚1"
+			                    ,"变形金刚2","变形金刚3","变形金刚4"];
+			//autocomplete 自动补全事件
+			$("#movieName").autocomplete({
+				source:a
+			})
+		});  */
+		
+		$(function (){
+			$.ajax({
+				url:"movieAction!queryMovieType.action",
+				type:"post",
+				dataType:"json",
+				success:function (datas){
+					//定义一个数组  长度等于 json数组的长度
+					var arr=new Array(datas.length);
+					//遍历数组
+					for (var i = 0; i < datas.length; i++) {
+						arr[i]= datas[i].typeName;
+					}
+					
+					$("#movieName").autocomplete({
+						source:arr
+					})
+				}
+			})
+		}) 
+	</script>

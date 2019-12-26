@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="【小蜗-短租】日租,短租,租房,家庭公寓,自助公寓,家庭旅馆,旅游">
+    <meta name="description" content="【小蜗-短租】最可信、有保障的短租日租在线交易平台" />
+    <title>入住人管理-小蜗</title>
+
+    <meta name="alexaVerifyID" content="r9sOpqmyWotVR8P7fvPILomFMOs" />
+    <link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e19110803/xzcss?css=global,jquery-ui,manage,detail,userlist,slideBar" />
+    <!-- Bootstrap 插件 css -->
+    <link href="../js3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Bootstrap 核心css -->
+    <link href="../js3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap TreeView css -->
+    <link href="../js3/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+    <!-- Bootstrap addTabs css -->
+    <link href="../js3/bootStrap-addTabs/bootstrap.addtabs.css" rel="stylesheet">
+
+    <!-- Bootstrap table css -->
+    <link href="../js3/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker css -->
+    <link href="../js3/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+    <!-- bootstrap-dialog css -->
+    <link href="../js3/bootstrap-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
+    <!-- bootstrap-fileinput css -->
+    <link href="../js3/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
+    <script type="text/javascript" src="../js3/bootstrap-fileinput/js/fileinput.js"></script>
+    <script type="text/javascript" src="../js3/bootstrap-fileinput/js/locales/zh.js"></script>
+</head>
+
+<body>
+
+<div style="width: 550px;float: left">
+    <form id="updForm">
+        <h3><font color="green">基本信息</font></h3>
+        <div>
+            <input type="hidden" name="userid" th:value="${yh.userid}" />
+            <font color="#a9a9a9">用户名:</font><input type="text" name="username" th:value="${yh.username}"/><br>
+            <font color="#a9a9a9">手机号码:</font><input type="text" name="phone" th:value='${yh.phone}'/><br>
+            <font color="#a9a9a9">邮箱:</font><input type="text" name="email" th:value="${yh.email}"/><br>
+        </div><br>
+        <h3><font color="green">身份信息</font>  &nbsp;&nbsp;
+            <font size="2px" color="#a9a9a9">仅用于必要的安全环节，其他情况下将为您严格保密
+            </font></h3>
+        <div>
+            <font color="#a9a9a9">真实姓名:</font><input type="text" name="truename" th:value="${yh.truename}"/><br>
+            <font color="#a9a9a9">身份证:</font><input type="text" name="idcard" th:value="${yh.idcard}"/>
+        </div><br>
+        <h3><font color="green">社交信息</font> &nbsp;&nbsp;
+            <font size="2px" color="#a9a9a9">越多的完善，越有助于在其他房东或者房客中产生信任</font></h3>
+        <div>
+            <font color="#a9a9a9">当前头像:</font><img th:src="${yh.img}" />
+            重新上传头像:
+            <input type="hidden" id="testimg" name="img" />
+            <input type="file" name="imgfile" id="touXiang"><br>
+            <font color="#a9a9a9">性别:</font>
+            <select name="sex">
+                <option>--请选择--</option>
+                <option th:selected="${yh.sex=='男'}">男</option>
+                <option th:selected="${yh.sex=='女'}">女</option>
+            </select><br>
+            <font color="#a9a9a9">年龄:</font><input type="text" name="age" th:value="${yh.age}"/><br>
+            <font color="#a9a9a9">家庭住址:</font><input type="text" name="address" th:value="${yh.address}"/><br>
+            <font color="#a9a9a9">血型:</font>
+            <select name="bloodtype">
+                <option>--请选择--</option>
+                <option th:selected="${yh.bloodtype=='A型'}">A型</option>
+                <option th:selected="${yh.bloodtype=='B型'}">B型</option>
+                <option th:selected="${yh.bloodtype=='AB型'}">AB型</option>
+                <option th:selected="${yh.bloodtype=='O型'}">O型</option>
+                <option th:selected="${yh.bloodtype=='H型'}">H型</option>
+            </select><br>
+            <font color="#a9a9a9">教育:</font>
+            <select name="education">
+                <option>--请选择--</option>
+                <option th:selected="${yh.education=='小学'}">小学</option>
+                <option th:selected="${yh.education=='中学'}">中学</option>
+                <option th:selected="${yh.education=='大专'}">大专</option>
+                <option th:selected="${yh.education=='本科'}">本科</option>
+                <option th:selected="${yh.education=='硕士'}">硕士</option>
+                <option th:selected="${yh.education=='博士'}">博士</option>
+            </select></span><br>
+            <font color="#a9a9a9">工作:</font><input type="text" name="works" th:value="${yh.works}"/><br>
+            <center>
+                <button type="button" class="btn btn-info" onclick="baocun()">保存</button>
+            </center>
+        </div>
+    </form>
+
+</div>
+
+<input type="hidden" name="actionName" id="actionName" value="FangKe_UserTenantList"/>
+<input type="hidden" name="xz_srf_token" id="xz_srf_token" value="867fc5e35f41ce556472c26a6d118f6e"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=Footer&httphost=www.xiaozhu.com"></script>
+<link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e19110803/xzcss?css=jquery.mCustomScrollbar,nyroModal,uploadify,shadepage" />
+<script type="text/javascript" src="../js/lazyload.js"></script>
+<script type="text/javascript" src="../js/xzim4.js?source=xiaozhu&dm=xiaozhu.com" id="webimSource"></script>
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=FangDong_Header&httphost=www.xiaozhu.com"></script>
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=FangKe_UserTenantList&httphost=www.xiaozhu.com"></script>
+
+<script>
+    //文件上传
+    function uploadify(){
+        $('#touXiang').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '../img/updaloadImg2', //上传的地址
+            allowedFileExtensions: ['jpg', 'png', 'jpeg', 'gif', 'bmp','mp4'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            maxFileCount: 5, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        }).on('fileuploaded', function(event, data, previewId, index) {
+            alert("已上传");
+            //alert(data.response.imgUrl)
+            var imgval = $('#testimg').val();
+            if(imgval == null || imgval == "" || imgval == undefined){
+                imgval = data.response.imgUrl;
+            }else{
+                imgval += ","+data.response.imgUrl;
+            }
+            $('#testimg').val(imgval);
+        });
+    }
+    $(function () {
+        uploadify();
+    })
+</script>
+
+<script type="text/javascript">
+
+    function baocun(){
+        $.ajax({
+            url:"../img/updUserInfo",
+            type:"post",
+            data:$("#updForm").serialize(),
+            success:function(data){
+                alert("修改成功")
+                /*location.href="../img/toUserHouse";*/
+            }
+        })
+    }
+
+</script>
+
+</body>
+</html>

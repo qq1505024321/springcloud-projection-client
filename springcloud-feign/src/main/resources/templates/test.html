@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--引入layui的js、css-->
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <script src="../layui/layui.all.js"></script>
+    <!--引入jquery-->
+    <script src="../layui/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div id="add" style = "display : none">
+
+    <form class="layui-form" action="" lay-filter="example">
+
+        <input name="id" style="display: none">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">书名</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">作者</label>
+            <div class="layui-input-block">
+                <input type="text" name="author" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">价格</label>
+            <div class="layui-input-block">
+                <input type="text" name="price" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">验证日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="date" id="date1" placeholder="yyyy-MM-dd" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择框</label>
+            <div class="layui-input-block">
+                <select name="type" >
+                    <option value=""></option>
+                    <option value="1">科技</option>
+                    <option value="2">悬疑</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">文本域</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="info"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!--修改弹框-->
+
+<div id="upda" style = "display : none">
+
+    <form class="layui-form" action="" lay-filter="example1">
+
+        <input name="id" style="display: none">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">书名</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">作者</label>
+            <div class="layui-input-block">
+                <input type="text" name="author" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">价格</label>
+            <div class="layui-input-block">
+                <input type="text" name="price" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">验证日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择框</label>
+            <div class="layui-input-block">
+                <select name="type" >
+                    <option value=""></option>
+                    <option value="1">历史</option>
+                    <option value="2">小说</option>
+                    <option value="3">科幻</option>
+                    <option value="4">悬疑</option>
+                    <option value="5">青春</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">文本域</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="info"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="update">立即提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+        <button type="button" class="layui-btn layui-btn-normal layui-btn-radius" onclick="del()">批量删除</button>
+
+         <button type="button" class="layui-btn layui-btn-warm" onclick="add()">新增</button>
+
+
+<table class="layui-hide" id="test"></table>
+
+
+
+</body>
+<script>
+    layui.use(['table','jquery','layer'], function(){
+
+        var table = layui.table;
+
+        var $ = layui.jquery;
+
+        table.render({
+            elem: '#test',
+            url:'../test/queryBook',
+            page: true,
+            limits: [5,10,15,20,25,30],
+            limit: 5,
+            cols: [
+                [
+                {type:'checkbox'},
+                {field:'id', title: 'ID',width:'10%',sort:true},
+                {field:'name', width:'10%', title: '书名'},
+                {field:'author',width:'10%', title: '作者'},
+                {field:'date', width:'20%', title: '时间'},
+                {field:'price', width:'10%', title: '价格'},
+                {field:'type', width:'15%',title: '类型',
+                    templet:function (a) {
+                        if(a.type==1){
+                            return "历史";
+                        }
+                        if(a.type==2){
+                            return "小说"
+                        }
+                        if(a.type==3){
+                            return "科幻";
+                        }
+                        if(a.type==4){
+                            return "悬疑"
+                        }
+                        if(a.type==5){
+                            return "青春";
+                        }
+                    }
+                },
+                {field:'xxx', width:'21%',title: '操作',
+                    templet:function (a) {
+                        return "<button type='button' class='layui-btn layui-btn-sm' onclick='upda("+a.id+")'><i class='layui-icon'></i></button>"
+                    }
+                }
+            ]
+            ]
+
+        });
+
+        del = function () {
+
+            var ids =  table.checkStatus("test");
+
+            var arr = ids.data;
+
+            var id = "";
+
+            for (var i=0;i<arr.length;i++){
+
+                id +=","+arr[i].id
+
+            }
+
+            var idss = id.substr(1);
+
+            $.ajax({
+
+                url:'../del',
+
+                data:{'ids':idss},
+
+                success:function(){
+
+                },error:function () {
+
+                }
+
+            })
+
+            location.reload()
+
+            console.log(idss)
+
+        }
+
+    });
+
+    layui.use(['table','jquery','layer','form','laydate'], function() {
+
+        var layer = layui.layer;
+
+        var form = layui.form;
+
+        var laydate = layui.laydate;
+
+        var table = layui.table;
+
+        var $ = layui.jquery;
+
+        add = function () {
+
+            layer.open({
+
+                //跨页面新增
+                /*type: 2,
+
+                 content:"../toadd",
+
+                 title: "新增信息",
+
+                 area: ['50%', '90%'],*/
+
+                //本页面新增 日期组件出不来
+                type: 1,
+
+                content: $("#add").html(),
+
+                title: "新增弹框",
+
+                area: ['50%', '90%'],
+
+                success: function () {
+
+                    form.render();
+
+                    laydate.render({
+                        elem: '#date1', //指定元素
+                        trigger: 'click' //采用click弹出
+                    });
+
+
+                    form.on('submit(demo1)', function (data) {
+
+                        console.log(data)
+
+                        console.log(data.field)
+
+                        var node = data.field
+
+                        $.ajax({
+
+                            url: "../add",
+
+                            data: node,
+
+                            success: function () {
+                                form.render();
+                                layer.closeAll()
+
+                            }
+
+                        })
+
+
+                    })
+
+                },
+                end: function () {
+                    table.reload();
+                }
+
+            })
+
+        }
+
+        upda = function (id) {
+            //跨页面修改
+            /*layer.open({
+
+                type: 2,
+
+                content:"../upda2?id="+id,
+
+                title: "修改信息",
+
+                area: ['50%', '90%'],
+            })*/
+
+            //本页面修改
+            $.ajax({
+
+                url: 'http://127.0.0.1:8080/upda',
+
+                data: {'id': id},
+
+                success: function (data) {
+
+                    laydate.render({
+                        elem: "#date2",
+                        trigger:'click'
+                    })
+
+                    layer.open({
+
+                        type: 1,
+
+                        title: "修改信息",
+
+                        area: ['50%', '90%'],
+
+                        content: $("#upda").html(),
+
+                        success: function () {
+
+                            form.val('example1', {
+                                "id": data.id,
+                                "name": data.name,
+                                "author": data.author
+                                , "price": data.price
+                                , "type": data.type
+                                , "date": data.date
+                                , "info": data.info
+                            })
+
+                            form.on('submit(update)', function (data) {
+
+                                console.log(data)
+
+                                console.log(data.field)
+
+                                var node = data.field
+
+                                $.ajax({
+
+                                    url: "http://127.0.0.1:8080/update",
+
+                                    data: node,
+
+                                    success: function () {
+                                        form.render();
+                                        layer.closeAll()
+
+                                    }
+
+                                })
+
+
+                            })
+
+
+                        }, end: function () {
+                            table.reload()
+                        }
+
+
+                    })
+
+                }
+
+            })
+        }
+    })
+</script>
+
+
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+
+
+    <title>发布房源页面</title><meta http-equiv="Cache-Control" content="no-transform ">
+    <meta http-equiv="mobile-agent" content="format=html5; url=https://m.xiaozhu.com/j/hongkong/fangzi/455998401">
+    <script src="../js/tingyun-rum.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/xzcss-globalpagesuggestjquery-ui.css">
+    <!--引入layui的js、css-->
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <script src="../layui/layui.all.js"></script>
+    <!--引入jquery-->
+    <script src="../layui/jquery.min.js"></script>
+</head>
+<body>
+
+<link rel="stylesheet" type="text/css" href="../css/xzcss-houseHoverrealNamePopjquer.css">
+<div class="o_mask" id='maskName' style="display:none;"></div>
+<div class="detail_wrapper">
+    <div class="detail_head clearfix">
+        <a href="index.html" class="xz_logo_detail">小猪</a><span class="slogan_v2 slogan_black"></span>
+        <ul class="nav_R nav_commen">
+            <li class="current">
+                <a href="#ongo" class="openTri_R" rel="nofollow"><span id="dlpeople"></span></a>
+                <div class="head_pop top40">
+                    <div class="pop_column">
+                        <a class="pop_T" href="#">房东中心</a>
+                        <span>
+                            <a class="fl" href="#">订单管理</a>
+                            <a class="fr" href="#">结算统计</a>
+                        </span>
+                        <span>
+                            <a class="fl" href="#">聊天记录</a>
+                            <a class="fr" href="#">我的点评</a>
+                        </span>
+                        <span>
+                            <a class="fl" href="#">房源信息</a>
+                            <a class="fr" href="#">价格房态</a>
+                        </span>
+                        <span>
+                            <a class="fl" href="#">短租日记</a>
+                            <a class="fr" href="#">个人资料</a>
+                        </span>
+                    </div>
+                    <div class="pop_column">
+                        <a class="pop_T pop_bor" href="#">房客中心</a>
+                        <span>
+                            <a class="fl" href="#">我的订单</a>
+                            <a class="fr" href="#">聊天记录</a>
+                        </span>
+                        <span>
+                            <a class="fl" href="#">我的点评</a>
+                            <a class="fr" href="#">个人资料</a>
+                        </span>
+                        <span class="textCt"><a href="#" id="IM-Logout">退出</a></span>
+                    </div>
+                </div>
+            </li>
+            <li>&middot;</li>
+            <li class="current">
+                <a href="#ongo" class="openTri_R">短租指南</a>
+                <div class="head_pop width_58 top40">
+                    <div class="pop_column">
+                        <span><a class="fl" href="xzweb-help_userguide_tenant.html">房客指南</a><a class="fr" href="xzweb-help_userguide_landlord.html">房东指南</a></span>
+                    </div>
+                </div>
+            </li>
+            <li><a rel="nofollow" href="" class="btn_free show-register-box" id="Pub_Btn">免费发布房源</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<!--/subNav-->
+
+<form id="addFormBynext">
+
+<div class="layui-row" style="margin-left: 380px;width: 950px;height: 100%;background-color: white;margin-top: 20px">
+    <!--房源地址-->
+    <div class="layui-col-md12">
+        <h3 style="margin-left: 10px;margin-top: 20px;color: #1aaa88">价格规则</h3>
+        <hr>
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 50px;margin-top: 20px">日价：</h3>
+            </div>
+            <br>
+            <div class="layui-col-md8" style="margin-top: 5px;margin-bottom: 20px">
+                <input type="text" name="dayprice" style="width: 80px;height: 25px"><span style="height: 25px;margin-left: 5px">元/每晚</span>
+                <font size="1" color="#a599a2">日价的10%将作为服务费，请酌情考虑</font>
+            </div>
+        </div>
+
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 30px;margin-top: 25px">新房促销：</h3>
+            </div>
+            <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                <input type="radio" name="homesales" value="1">参与新房促销<br><br>
+                <span style="margin-left: 20px;font-size: 12px"><font color="red">(前3单入住的房客将享受8折促销。新房促销助于提升您在众多房源中的竞争力，增加房源的曝光度)</font></span>
+                <br><br>
+                <input type="radio" name="homesales" value="2">不参与新房促销<br><br>
+                <span style="margin-left: 20px;font-size: 12px"><font color="red">(较其他新房源可能不具备有利的价格优势及足够的吸引力)</font></span>
+            </div>
+        </div>
+
+
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 50px;margin-top: 25px">押金：</h3>
+            </div>
+            <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                <input type="radio" name="cashpledge" value="1">&nbsp;&nbsp;不收取押金
+                <input type="radio" name="cashpledge" value="2" style="margin-left: 80px">&nbsp;&nbsp;收取押金
+            </div>
+        </div>
+
+        <div class="layui-col-md12">
+
+            <div class="layui-col-md2">
+                <h3 style="margin-left: 40px;margin-top: 25px">清洁费：</h3>
+            </div>
+            <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                <input type="text" name="cleaningfee" style="width: 80px;height: 25px"><span style="height: 25px;margin-left: 5px">元/每单</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+    <div class="layui-row" style="margin-left: 380px;width: 950px;height: 100%;background-color: white;margin-top: 20px">
+        <!--房源地址-->
+        <div class="layui-col-md12">
+            <h3 style="margin-left: 10px;margin-top: 20px;color: #1aaa88">规则要求</h3>
+            <hr>
+            <div class="layui-col-md12">
+
+                <div class="layui-col-md2">
+                    <h3 style="margin-left: 50px;margin-top: 20px">交易规则：</h3>
+                </div>
+                <br>
+                <div class="layui-col-md8" style="margin-top: 5px;margin-bottom: 20px">
+                    房客需支付每日价格的&nbsp;&nbsp;
+                    <select name="transactionrules" lay-verify="required" lay-filter="xmFilter" style="width: 80px;height: 30px" id="bedInfo">
+                        <option value="1">100%</option>
+                        <option value="2">50%</option>
+                        <option value="3">20%</option>
+                    </select>,作为每日订金。
+                </div>
+            </div>
+
+
+
+            <div class="layui-col-md12">
+
+                <div class="layui-col-md2">
+                    <h3 style="margin-left: 30px;margin-top: 25px">房客退订规则：</h3>
+                </div>
+                <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                    <input type="radio" name="unsubscriberules" value="1">&nbsp;&nbsp;宽松<br><br>
+                    <span style="margin-left: 20px;font-size: 12px"><font color="red">(入住前1天内取消需支付违约金)</font></span>
+                    <br><br>
+                    <input type="radio" name="unsubscriberules" value="2">&nbsp;&nbsp;中等<br><br>
+                    <span style="margin-left: 20px;font-size: 12px"><font color="red">(入住前3天内取消需支付违约金)</font></span>
+                    <br><br>
+                    <input type="radio" name="unsubscriberules" value="3">&nbsp;&nbsp;严格<br><br>
+                    <span style="margin-left: 20px;font-size: 12px"><font color="red">(入住前7天内取消需支付违约金)</font></span>
+                </div>
+            </div>
+
+
+            <div class="layui-col-md12">
+
+                <div class="layui-col-md2">
+                    <h3 style="margin-left: 50px;margin-top: 25px">最少入住天数：</h3>
+                </div>
+                <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                    <input type="text" name="minimumdays" style="width: 80px;height: 30px">&nbsp;&nbsp;天
+                </div>
+            </div>
+
+            <div class="layui-col-md12">
+
+                <div class="layui-col-md2">
+                    <h3 style="margin-left: 50px;margin-top: 25px">最多入住天数：</h3>
+                </div>
+                <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                    <input type="text" name="maxdays" style="width: 80px;height: 30px">&nbsp;&nbsp;天
+                </div>
+            </div>
+
+            <div class="layui-col-md12">
+
+                <div class="layui-col-md2">
+                    <h3 style="margin-left: 30px;margin-top: 25px">是否接待境外人士：</h3>
+                </div>
+                <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                    <input type="radio" name="foreigners" value="1">&nbsp;&nbsp;是
+                    <input type="radio" name="foreigners" value="2" style="margin-left: 80px">&nbsp;&nbsp;否
+                </div>
+            </div>
+
+
+
+            <div class="layui-col-md12">
+
+                <div class="layui-col-md2">
+                    <h3 style="margin-left: 50px;margin-top: 25px">其他要求：</h3>
+                </div>
+                <div class="layui-col-md8" style="margin-top: 25px;margin-bottom: 20px">
+                    <textarea rows="10" style="width: 600px;height: 200px;margin-bottom: 20px" name="otherrequirements"></textarea>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<div class="layui-row" style="margin-left: 380px;margin-top: 20px">
+    <button type="button"   onclick="addHouseprice()" class="layui-btn layui-btn-radius layui-btn-primary"  style="background-color: rgba(255,48,35,1);color: white">保存并继续</button>
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="foot_v2">
+    <ul class="foot_ul">
+        <li><a class="guide" href="xzweb-help_userguide_tenant.html" target="_blank">房客指南</a></li>
+        <li><a class="guide icon_fk" href="xzweb-help_userguide_landlord.html" target="_blank">房东指南</a></li>
+        <li>
+            <span class="guide_T">关于我们</span>
+            <a href="aboutus.html" target="_blank">关于小猪</a>
+            <a href="javascript:;" target="_blank">加入我们</a>
+            <a href="contactus.html" target="_blank">联系我们</a>
+        </li>
+        <li>
+            <span class="guide_T">网站帮助</span>
+            <a href="index5.html" target="_blank">帮助中心</a>
+            <a href="sitemap.html" target="_blank">网站地图</a>
+        </li>
+        <li class="width_280">
+            <span class="guide_T">网站协议</span><br>
+            <a href="service.html" target="_blank">服务协议</a>
+            <a href="landlordrule.html" target="_blank">房东规则</a>
+            <a href="tenantrule.html" target="_blank">房客规则</a>
+            <a href="auditrule.html" target="_blank">房源上线标准</a>
+            <a href="privacy.html" target="_blank">隐私保护</a>
+            <a href="copyright.html" target="_blank">版权声明</a>
+            <a href="disclaimer.html" target="_blank">免责声明</a>
+            <a href="intellectualproperty.html" target="_blank">知识产权声明</a>
+            <a href="commentrule.html" target="_blank">点评发布规则</a>
+            <a href="japanreservationrule.html" target="_blank">日本标准住宅宿泊仲介业约款</a>
+        </li>
+        <li class="bigFont online_kf">
+            <span class="logindialog"><i></i>在线客服</span>
+            <p>客服电话  400 - 010 - 7890</p>
+            <p>客服邮箱  service@xiaozhu.com</p>
+        </li>
+    </ul>
+    <dl class="link_dl">
+        <dt>城市导航</dt>
+        <dd>
+            <a target="_blank" href="index1.html">北京短租房</a>
+            <a target="_blank" href="index6.html">上海短租房</a>
+            <a target="_blank" href="index7.html">南京短租房</a>
+            <a target="_blank" href="index2.html">成都短租房</a>
+            <a target="_blank" href="index8.html">广州短租房</a>
+            <a target="_blank" href="index4.html">重庆短租房</a>
+            <a target="_blank" href="index9.html">武汉短租房</a>
+            <a target="_blank" href="index10.html">大连短租房</a>
+            <a target="_blank" href="index11.html">三亚短租房</a>
+            <a target="_blank" href="index12.html">丽江短租房</a>
+            <a target="_blank" href="index13.html">天津短租房</a>
+            <a target="_blank" href="index14.html">香港短租房</a>
+            <a target="_blank" href="index15.html">长沙短租房</a>
+            <a target="_blank" href="index16.html">无锡短租房</a>
+            <a target="_blank" href="index17.html">昆明短租房</a>
+            <a target="_blank" href="index18.html">济南短租房</a>
+            <a target="_blank" href="index19.html">厦门短租房</a>
+            <a target="_blank" href="index3.html">青岛短租房</a>
+            <a target="_blank" href="index20.html">郑州短租房</a>
+            <a target="_blank" href="index21.html">西安短租房</a>
+            <a target="_blank" href="index22.html">杭州短租房</a>
+            <a target="_blank" href="index23.html">深圳短租房</a>
+            <a target="_blank" href="index24.html">沈阳短租房</a>
+            <a target="_blank" href="index25.html">苏州短租房</a>
+        </dd>
+    </dl>
+    <dl class="link_dl">
+
+    </dl>
+    <div class="foot_btm">京ICP备12035936号-1 &nbsp;&nbsp;许可证号：京ICP证140510号 &nbsp;&nbsp; <a href="javascript:;" |="" name="mt8SMvYyRDI92b06nuDs8dPFapllCJYidqhM1WlOoGRZ9DWpbo" rel="nofollow" target="_blank">安全联盟</a> &nbsp;&nbsp; 北京快跑信息科技有限公司 &nbsp;&nbsp; <a href="files/yingye.jpg" |="" name="yingyezhizhao" rel="nofollow" target="_blank">营业执照号 103613118</a> <span style="display:none">  &nbsp;&nbsp; 地址：北京市海淀区知春路56号   &nbsp;&nbsp;电话：010-62961978</span>
+    </div>
+    <div style="margin:0 auto;color:#bdc3c7;">
+        <a target="_blank" href="javascript:;" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../picture/govRecord_icon.png"><p style="display:inline-block;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#bdc3c7;">京公网安备 11010802020380号</p></a>
+        &nbsp;&nbsp; 违法和不良信息举报电话：4000107890转6  &nbsp;&nbsp; 举报邮箱：jubao@xiaozhu.com
+    </div>
+</div>
+
+<input type="hidden" name="actionName" id="actionName" value="Front_Detail">
+<input type="hidden" name="xz_srf_token" id="xz_srf_token" value="2982b726deea1617eb82514eb68e4f6d">
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/xzjs-Footer_hongkong.xiaozhu.com.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/xzcss-jquery.mCustomScrollbarnyr.css">
+<script type="text/javascript" src="../js/lazyload.js"></script>
+<script type="text/javascript" src="../js/xzim4-xiaozhu_xiaozhu.com.js" id="webimSource"></script>
+
+<!--/footer-->
+<input type='hidden' id='latitude' value="22.322386">
+<input type='hidden' id='longitude' value="114.18045">
+<input type='hidden' id='lodgeUnitId' value="455998401">
+<input type="hidden" id="bookUrl" value="http://www.xiaozhu.com/xz_web2/order/pages/lodger/order.html">
+<input type='hidden' id='landlordDiaryNum' value="0">
+<input type='hidden' id='imgCount' value="38">
+<input type='hidden' id='minDay' value="1">
+<input type='hidden' id='cityName' value="香港">
+<input type='hidden' id='getIfOversea' value="1">
+<input type='hidden' id='isAbroad' value="0">
+<input type='hidden' id='rule_A' value="30">
+<input type='hidden' id="rule_N" value="30">
+<input type='hidden' id="lodgeUnitCreateType" value="publish">
+<input type='hidden' id="nativeCity" value="香港">
+<input type="hidden" id="scriptUrl" value="//jci.xiaozhu..1.com/e19120600/xzjs?k=Front_Detail&httphost=hongkong.xiaozhu.com">
+
+<script type="text/javascript" src="../js/xzjs-Front_Detail_hongkong.xiaoz.js"></script>
+<!-- [if ite IE 8]>
+<script src="../js/respond43.js"></script>
+<![endif]-->
+<div class="mask" style="display:none;"></div>
+
+
+
+
+
+
+<div class="sharev2_mask"></div>
+<div class="sharev2_w_522" id="sharev2_pop">
+    <h4 class="sharev2_h4">分享到</h4>
+    <ul class="sharev2_way clearfix">
+        <a href="javascript:;" target="_blank">
+            <li class="sharev2_pr">
+                <img src="../picture/sharev2_wx.png" width="42" height="42">
+                <div class="sharev2weixin_code">
+                    <div class="sharev2weixin_tip"></div>
+                    <h5 style="color:#333 !important">&nbsp;&nbsp;&nbsp;使用微信“扫一扫”</h5>
+                    <p class="sharev2weixin_code_P1"><img src="../picture/ee6f82f6a4.jpg" width="122" height="124" alt="微信分享"></p>
+                    <p class="sharev2weixin_code_P2"><a class="pink" href="javascript:;" target="_blank">扫一扫在哪里？扫完之后怎么分享？</a></p>
+                </div>
+            </li>
+        </a>
+        <a href="javascript:;" id="sharetool_sinaweibo" target="_blank"><li><img src="../picture/sharev2_xl.png" width="42" height="42"></li></a>
+        <a href="javascript:;" id="sharetool_qqzone" target="_blank"><li class="marginr0"><img src="../picture/sharev2_kj.png" width="42" height="42"></li></a>
+    </ul>
+    <a href="#ongo" class="sharev2_cancel_btn">取消</a>
+    <input type="hidden" id="share_objId" value="455998401">
+    <input type="hidden" id="share_objType" value="1">
+    <input type="hidden" id="share_contentType" value="detail">
+    <input type="hidden" id="share_city" value="">
+    <input type="hidden" id="hideWechat" value="">
+</div>
+<input type="hidden" name="duepeoplename" th:value="${session.loginUser.username}" id="denglurens">
+</body>
+<script type="text/javascript">
+
+
+    addHouseprice = function () {
+        var form = $("#addFormBynext").serialize()
+        $.ajax({
+            url:"../test/addHouseprice",
+            type:"post",
+            data:form,
+            success:function (data) {
+                location.href="../test/tohousingpictures" ;
+
+            }
+        })
+    }
+    $(function () {
+        bedInfo();
+        housetype();
+        $("#dlpeople").html($("#denglurens").val())
+    })
+
+</script>
+</html>

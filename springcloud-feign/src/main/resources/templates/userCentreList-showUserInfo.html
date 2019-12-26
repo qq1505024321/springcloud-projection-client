@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="【小蜗-短租】日租,短租,租房,家庭公寓,自助公寓,家庭旅馆,旅游">
+    <meta name="description" content="【小蜗-短租】最可信、有保障的短租日租在线交易平台" />
+    <title>入住人管理-小蜗</title>
+
+    <meta name="alexaVerifyID" content="r9sOpqmyWotVR8P7fvPILomFMOs" />
+    <link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e19110803/xzcss?css=global,jquery-ui,manage,detail,userlist,slideBar" />
+    <!-- Bootstrap 插件 css -->
+    <link href="../js3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Bootstrap 核心css -->
+    <link href="../js3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap TreeView css -->
+    <link href="../js3/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+    <!-- Bootstrap addTabs css -->
+    <link href="../js3/bootStrap-addTabs/bootstrap.addtabs.css" rel="stylesheet">
+
+    <!-- Bootstrap table css -->
+    <link href="../js3/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker css -->
+    <link href="../js3/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+    <!-- bootstrap-dialog css -->
+    <link href="../js3/bootstrap-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
+    <!-- bootstrap-fileinput css -->
+    <link href="../js3/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
+</head>
+
+<body>
+<!--<input type="hidden" th:value="${session.loginUser.username}" id="dengluren">-->
+<div class="header height56">
+    <div class="top"></div>
+    <div class="top_wraper">
+        <div class="top_con">
+
+            <link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e19110803/xzcss?css=realNamePop,jquery-ui,nyroModal" />
+            <div class="o_mask" id='maskName'  style="display:none;"></div>
+            <span style="color: #fff;font-size: 19px;float: left;margin: 13px 0 0 10px;">酒店之外，就住小蜗</span>
+            <ul class="nav">
+                <li><span class="line_index"></span></li>
+                <li><a href="http://www.xiaozhu.com/xz_web2/order/pages/lodger/list.html" rel="nofollow">我的订单</a></li>
+                <li><span class="line_index"></span></li>
+                <li class="active">
+                    <a class="icon_zhinan" href="#ongo">短租指南</a>
+                    <div class="sel_box sel_zhinan">
+                        <a href="http://192.168.6.11:8080/toShangLu">房客指南</a>
+                        <a href="http://www.xiaozhu.com/xzweb.php?op=Help_UserGuide&type=landlord">房东指南</a>
+                    </div>
+                </li>
+                <li>
+                    <a id="Pub_Btn" class="btn_public " data-href="http://www.xiaozhu.com/publish" rel="nofollow"></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="main clearfix">
+    <div class="bread_nav_bar">
+        我是房客
+        <span> &gt;</span>入住人信息管理
+    </div>
+    <div class="w_960">
+    <div class="main clearfix">
+        <div class="slideBar_box">
+            <ul>
+                <li class="s_02"><a  href="http://127.0.0.1:8080/dingdan"><span class="icon"></span>订单</a></li>
+
+                <li class="s_03"><a  href=""><span class="icon"></span>点评</a></li>
+
+                <li class="s_05"><a  href="http://127.0.0.1:8080/cha"><span class="icon"></span>常用入住人</a></li>
+
+                <li class="s_06"><a  href=""><span class="icon"></span>代金券</a></li>
+
+                <li class="s_07"><a href=""><span class="icon"></span>积分</a></li>
+
+                <li class="s_09"><a   href=""><span class="icon"></span>消息记录</a></li>
+
+                <li class="s_10 btm_line"><a href="http://127.0.0.1:8080/tongzhi"><span class="icon"></span>通知</a></li>
+
+                <li class="btm_line s_11 cur"><a href="http://127.0.0.1:8092/img/toUserInfo"><span class="icon on"></span>个人资料</a></li>
+
+                <li class="s_12"><a href="http://127.0.0.1:8092/img/toCollec"><span class="icon"></span>收藏</a></li>
+
+                <li class="s_13"><a href=""><span class="icon"></span>密码设置</a></li>
+
+            </ul>
+        </div>
+
+        <div style="width: 550px;float: left">
+            <form id="updateform">
+                <h3><font color="green">基本信息</font></h3>
+                <div>
+                    <font color="#a9a9a9">用户名:</font><span th:text='${yh.username}'></span><br>
+                    <font color="#a9a9a9">手机号码:</font><span th:text='${yh.phone}'></span><br>
+                    <font color="#a9a9a9">邮箱:</font><span th:text="${yh.email}"></span><br>
+                </div><br>
+                <h3><font color="green">身份信息</font>  &nbsp;&nbsp;
+                    <font size="2px" color="#a9a9a9">仅用于必要的安全环节，其他情况下将为您严格保密
+                    </font></h3>
+                <div>
+                    <font color="#a9a9a9">真实姓名:</font><span th:text="${yh.truename}"></span><br/>
+                    <font color="#a9a9a9">身份证:</font><span th:text="${yh.idcard}"></span>
+                </div><br>
+                <h3><font color="green">社交信息</font> &nbsp;&nbsp;
+                    <font size="2px" color="#a9a9a9">越多的完善，越有助于在其他房东或者房客中产生信任</font></h3>
+                <div>
+                    <font color="#a9a9a9">头像:</font><img th:src="${yh.img}" width="100px" height="100px"/><br>
+                    <font color="#a9a9a9">性别:</font><span th:text="${yh.sex}"></span><br>
+                    <font color="#a9a9a9">年龄:</font><span th:text="${yh.age}"></span><br>
+                    <font color="#a9a9a9">家庭住址:</font><span th:text="${yh.address}"></span><br>
+                    <font color="#a9a9a9">血型:</font><span th:text="${yh.bloodtype}"></span><br>
+                    <font color="#a9a9a9">教育:</font><span th:text="${yh.education}"></span><br>
+                    <font color="#a9a9a9">工作:</font><span th:text="${yh.works}"></span><br>
+                    <center>
+                        <button type="button" class="btn btn-info" onclick="xiugai()">编辑信息</button>
+                    </center>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="foot_v2">
+        <ul class="foot_ul">
+            <li><a class="guide" href="http://192.168.6.11:8080/toShangLu" target="_blank">房客指南</a></li>
+            <li><a class="guide icon_fk" href="http://www.xiaozhu.com/xzweb.php?op=Help_UserGuide&type=landlord" target="_blank">房东指南</a></li>
+            <li>
+                <span class="guide_T">关于我们</span>
+                <a href="http://www.xiaozhu.com/aboutus" target="_blank">关于小蜗</a>
+                <a href="http://app.mokahr.com/apply/xiaozhu/4514" target="_blank">加入我们</a>
+                <a href="http://www.xiaozhu.com/contactus" target="_blank">联系我们</a>
+            </li>
+            <li>
+                <span class="guide_T">网站帮助</span>
+                <a href="http://www.xiaozhu.com/help/index" target="_blank" >帮助中心</a>
+                <a href="http://www.xiaozhu.com/sitemap.html" target="_blank">网站地图</a>
+            </li>
+            <li class="width_280">
+                <span class="guide_T">网站协议</span><br/>
+                <a href="http://www.xiaozhu.com/help/service" target="_blank">服务协议</a>
+                <a href="http://www.xiaozhu.com/help/landlordRule" target="_blank">房东规则</a>
+                <a href="http://www.xiaozhu.com/help/tenantRule" target="_blank">房客规则</a>
+                <a href="http://www.xiaozhu.com/help/auditRule" target="_blank">房源上线标准</a>
+                <a href="http://www.xiaozhu.com/help/privacy" target="_blank">隐私保护</a>
+                <a href="http://www.xiaozhu.com/help/copyright" target="_blank">版权声明</a>
+                <a href="http://www.xiaozhu.com/help/disclaimer" target="_blank">免责声明</a>
+                <a href="http://www.xiaozhu.com/help/intellectualProperty" target="_blank">知识产权声明</a>
+                <a href="http://www.xiaozhu.com/help/commentRule" target="_blank">点评发布规则</a>
+                <a href="http://www.xiaozhu.com/help/japanReservationRule" target="_blank">标准住宅宿泊仲介业约款</a>
+            </li>
+            <li class="bigFont online_kf">
+                <p>客服电话  400 - 010 - 7890</p>
+                <p>客服邮箱  service@.com</p>
+            </li>
+        </ul>
+        <div class="foot_btm">京ICP备12035936号-1 &nbsp;&nbsp;许可证号：京ICP证140510号 &nbsp;&nbsp; <a href="//www.anquan.org/s/www.xiaozhu.com" |="" name="mt8SMvYyRDI92b06nuDs8dPFapllCJYidqhM1WlOoGRZ9DWpbo" rel="nofollow" target="_blank">安全联盟</a> &nbsp;&nbsp; 北京快跑信息科技有限公司 &nbsp;&nbsp; <a href="http://www.xiaozhu.com/images/yingye.jpg" |="" name="yingyezhizhao" rel="nofollow" target="_blank">营业执照号 103613118</a> <span style="display:none">  &nbsp;&nbsp; 地址：北京市海淀区知春路56号   &nbsp;&nbsp;电话：010-62961978</span>
+        </div>
+        <div style="margin:0 auto;color:#bdc3c7;">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020380" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/images/govRecord_icon.png"/><p style="display:inline-block;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#bdc3c7;">京公网安备 11010802020380号</p></a>
+            &nbsp;&nbsp; 违法和不良信息举报电话：4000107890转6  &nbsp;&nbsp; 举报邮箱：jubao@peiqi.com
+        </div>
+    </div>
+</div>
+</div>
+
+<input type="hidden" name="actionName" id="actionName" value="FangKe_UserTenantList"/>
+<input type="hidden" name="xz_srf_token" id="xz_srf_token" value="867fc5e35f41ce556472c26a6d118f6e"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=Footer&httphost=www.xiaozhu.com"></script>
+<link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e19110803/xzcss?css=jquery.mCustomScrollbar,nyroModal,uploadify,shadepage" />
+<script type="text/javascript" src="../js/lazyload.js"></script>
+<script type="text/javascript" src="../js/xzim4.js?source=xiaozhu&dm=xiaozhu.com" id="webimSource"></script>
+
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=FangDong_Header&httphost=www.xiaozhu.com"></script>
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e19110803/xzjs?k=FangKe_UserTenantList&httphost=www.xiaozhu.com"></script>
+
+<script type="text/javascript">
+
+    function xiugai(){
+        location.href="../img/toUserInfo";
+    }
+
+</script>
+
+</body>
+</html>

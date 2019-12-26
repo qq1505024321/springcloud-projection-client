@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.HouseInfo_xcMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.model.HouseInfo_xc" >
+    <id column="hoseid" property="hoseid" jdbcType="INTEGER" />
+    <result column="houseadderss" property="houseadderss" jdbcType="VARCHAR" />
+    <result column="housetypeid" property="housetypeid" jdbcType="INTEGER" />
+    <result column="leasetype" property="leasetype" jdbcType="INTEGER" />
+    <result column="roomnum" property="roomnum" jdbcType="INTEGER" />
+    <result column="hallnum" property="hallnum" jdbcType="INTEGER" />
+    <result column="verandanum" property="verandanum" jdbcType="INTEGER" />
+    <result column="toiletnum" property="toiletnum" jdbcType="INTEGER" />
+    <result column="kitchennum" property="kitchennum" jdbcType="INTEGER" />
+    <result column="housearea" property="housearea" jdbcType="VARCHAR" />
+    <result column="toilettypeid" property="toilettypeid" jdbcType="INTEGER" />
+    <result column="bedtypeid" property="bedtypeid" jdbcType="INTEGER" />
+    <result column="bedlength" property="bedlength" jdbcType="DOUBLE" />
+    <result column="bedwidth" property="bedwidth" jdbcType="DOUBLE" />
+    <result column="bednum" property="bednum" jdbcType="INTEGER" />
+    <result column="suitablenum" property="suitablenum" jdbcType="INTEGER" />
+    <result column="commensalismtype" property="commensalismtype" jdbcType="INTEGER" />
+    <result column="similarproperties" property="similarproperties" jdbcType="INTEGER" />
+    <result column="createdate" property="createdate"/>
+    <result column="status" property="status"/>
+    <result column="userid" property="userid"/>
+  </resultMap>
+  <insert id="addHouseInfoByNext" keyProperty="hoseid" useGeneratedKeys="true" parameterType="com.jk.model.HouseInfo_xc">
+
+    insert into t_houseinfo (houseadderss, housetypeid,
+      leasetype, roomnum, hallnum,
+      verandanum, toiletnum, kitchennum,
+      housearea, toilettypeid, bedtypeid,
+      bedlength, bedwidth, bednum,
+      suitablenum, commensalismtype, similarproperties
+      ,createdate,status,userid
+      )
+    values (#{houseadderss}, #{housetypeid},
+      #{leasetype}, #{roomnum}, #{hallnum},
+      #{verandanum}, #{toiletnum}, #{kitchennum},
+      #{housearea}, #{toilettypeid}, #{bedtypeid},
+      #{bedlength}, #{bedwidth}, #{bednum},
+      #{suitablenum}, #{commensalismtype}, #{similarproperties},now(),1,#{userid}
+      )
+
+  </insert>
+
+
+  <select id="findHouseByid" resultMap="BaseResultMap">
+
+    select * from t_houseinfo where houseadderss = #{name}
+  </select>
+
+
+  <select id="findHouseTotal" resultType="long">
+    select count(*) from t_houseinfo where
+    userid = #{userid}
+  </select>
+
+  <select id="findFangjianById" resultMap="BaseResultMap">
+
+        SELECT a.hoseid,a.houseadderss,a.roomnum,a.hallnum,a.bednum,b.leasetype as leasetypes,c.dayprice
+        FROM
+        t_houseinfo a
+        LEFT JOIN t_house_leasetype b
+        ON a.leasetype = b.typeid
+        LEFT JOIN t_house_price c
+        on a.hoseid = c.houseid
+        WHERE a.userid = #{userid}
+        order by a.createdate
+        limit #{start},#{rows}
+  </select>
+
+  <!--es发布房源同步查询-->
+  <select id="getHouseInfoByHouseid" resultType="com.jk.model.HouseInfoEs">
+
+    SELECT hinfo.*,house.housetitle housenam,house.adorn houseshow,thp.dayprice,tu.username,tht.` housetype` housetypes,tbt.bedtypename,thl.leasetype leasetypes,
+        tui.img,thi.ketingimgurl,thi.chufangimgurl,thi.qitaimgurl,thi.woshiimgurl,thi.wsjimgurl
+        FROM	t_houseinfo hinfo
+        left JOIN t_housedescribe house ON hinfo.hoseid=house.houseid
+				LEFT join t_house_type tht ON hinfo.housetypeid=tht.` housetypeid`
+				LEFT JOIN t_bed_type tbt ON hinfo.bedtypeid=tbt.bedtypeid
+				LEFT JOIN t_house_leasetype thl ON thl.typeid=hinfo.leasetype
+
+        LEFT join t_house_price thp ON hinfo.hoseid = thp.houseid
+
+        LEFT JOIN t_house_img thi ON thi.houseid=hinfo.hoseid
+        left join t_user tu ON tu.userid=hinfo.userid
+        left JOIN t_user_info tui ON tui.userid=tu.userid
+
+				where hinfo.hoseid = #{houseid}
+
+  </select>
+</mapper>

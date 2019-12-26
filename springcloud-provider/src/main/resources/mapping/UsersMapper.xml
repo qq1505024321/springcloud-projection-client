@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.UsersMapper" >
+
+  <sql id="all" >
+    userid, username, userpwd, phone, usertype, usertime
+  </sql>
+
+  <select id="queryUserByName" resultType="com.jk.model.Users" >
+    select <include refid="all" /> from t_user where username = #{username}
+  </select>
+
+  <insert id="insertUser" useGeneratedKeys="true" keyProperty="userid" keyColumn="userid">
+    insert into t_user (username, userpwd, phone, usertype, usertime)
+    values (#{username}, #{userpwd},#{phone}, 1, now())
+  </insert>
+  <insert id="insertUserInfo" >
+    insert into t_user_info (userid)
+    values (#{userid})
+  </insert>
+
+  <select id="queryUserByphone" resultType="com.jk.model.Users" >
+    select <include refid="all" /> from t_user where username = #{username} and phone = #{phone}
+  </select>
+
+  <update id="updateUser" parameterType="com.jk.model.Users" >
+    update t_user
+    set userpwd = #{userpwd}
+    where phone = #{phone} and username = #{username}
+  </update>
+
+
+
+
+
+  <select id="queryUserById" resultType="com.jk.model.UserInfo" >
+    select a.userid,a.username,a.phone,b.idcard,b.email,b.truename,b.sex,b.age,b.address,b.bloodtype,b.education,b.works,b.img
+    from t_user a left join t_user_info b on a.userid=b.userid
+    where a.userid = #{userid}
+  </select>
+
+  <update id="updateUserById">
+    update t_user
+    set username = #{username},phone = #{phone}
+    where userid = #{userid}
+  </update>
+
+  <update id="updateUserInfoById">
+    update t_user_info
+    set truename = #{truename},idcard = #{idcard},email = #{email},sex = #{sex},age = #{age},address = #{address},bloodtype = #{bloodtype},education = #{education},works = #{works},img = #{img}
+    where userid = #{userid}
+  </update>
+
+
+</mapper>

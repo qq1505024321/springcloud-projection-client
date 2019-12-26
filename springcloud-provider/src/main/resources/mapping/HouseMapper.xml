@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.HouseMapper" >
+
+
+    <select id="queryHourse" resultType="com.jk.model.Houses">
+        SELECT hinfo.*,house.housetitle housenam,house.adorn houseshow,thp.dayprice,tu.username,tht.` housetype` housetypes,tbt.bedtypename,thl.leasetype leasetypes,
+        tui.img,thi.ketingimgurl,thi.chufangimgurl,thi.qitaimgurl,thi.woshiimgurl,thi.wsjimgurl
+        FROM	t_houseinfo hinfo
+        left JOIN t_housedescribe house ON hinfo.hoseid=house.houseid
+				LEFT join t_house_type tht ON hinfo.housetypeid=tht.` housetypeid`
+				LEFT JOIN t_bed_type tbt ON hinfo.bedtypeid=tbt.bedtypeid
+				LEFT JOIN t_house_leasetype thl ON thl.typeid=hinfo.leasetype
+
+        LEFT join t_house_price thp ON hinfo.hoseid = thp.houseid
+
+        LEFT JOIN t_house_img thi ON thi.houseid=hinfo.hoseid
+        left join t_user tu ON tu.userid=hinfo.userid
+        left JOIN t_user_info tui ON tui.userid=tu.userid
+                limit 0,9
+    </select>
+
+   <select id="queryHouse2" resultType="com.jk.model.Houses">
+        SELECT hinfo.*,house.housetitle housenam,house.adorn houseshow,thp.dayprice,tu.username,tht.` housetype` housetypes,tbt.bedtypename,thl.leasetype leasetypes,
+        tui.img,thi.ketingimgurl,thi.chufangimgurl,thi.qitaimgurl,thi.woshiimgurl,thi.wsjimgurl
+        FROM	t_houseinfo hinfo
+        left JOIN t_housedescribe house ON hinfo.hoseid=house.houseid
+				LEFT join t_house_type tht ON hinfo.housetypeid=tht.` housetypeid`
+				LEFT JOIN t_bed_type tbt ON hinfo.bedtypeid=tbt.bedtypeid
+				LEFT JOIN t_house_leasetype thl ON thl.typeid=hinfo.leasetype
+
+        LEFT join t_house_price thp ON hinfo.hoseid = thp.houseid
+
+        LEFT JOIN t_house_img thi ON thi.houseid=hinfo.hoseid
+        left join t_user tu ON tu.userid=hinfo.userid
+        left JOIN t_user_info tui ON tui.userid=tu.userid
+        where hinfo.status = 2
+    </select>
+
+
+    <select id="queryVisitor" resultType="long">
+     SELECT count(*) FROM t_visitorvolume
+    </select>
+
+    <insert id="saveVisitor">
+        INSERT INTO t_visitorvolume(classmethod,vdate)
+        values(#{calssmethod},now())
+    </insert>
+</mapper>

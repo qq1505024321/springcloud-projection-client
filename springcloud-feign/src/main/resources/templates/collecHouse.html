@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入layui的js、css-->
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <script src="../layui/layui.all.js"></script>
+    <!--引入jquery-->
+    <script src="../layui/jquery.min.js"></script>
+    <!--引入vue-->
+    <script src="../vue/vue.js"></script>
+</head>
+<body>
+<table style="border-spacing: 200px 30px">
+    <tbody id="houseImg"></tbody>
+</table>
+
+<!--<div id="houseImg" style="width: 80px;height: 80px">
+    &lt;!&ndash;<a><img src=""></a>&ndash;&gt;
+</div>-->
+<script>
+    var $ = layui.jquery
+    $(function () {
+        queryHouseImg();
+    })
+
+    function queryHouseImg() {
+
+        $.ajax({
+            url:'../img/findUserCollecHouseImg',
+            type:'post',
+            data:{userid:4},
+            success:function (data) {
+                /*href='"+data[i].houseid+"'/!**!/*/
+                var houseImg = "";
+                for (var i=0;i<data.length;i++) {
+                    //houseImg += "<a href='javascript:findHouseInfo("+data[i].houseid+")'><img width='150px' height='150px' src='"+data[i].houseimg+"'></a>";
+                    houseImg += "<th><td><a href='javascript:findHouseInfo("+data[i].houseid+")'><img width='150px' height='150px' src='"+data[i].houseimg+"'></a></td></th>" +
+                        "<th width='600px'></th><th></th><th><td><a href='javascript:findHouseInfo("+data[i].houseid+")'><span style='color: red'>查看房源信息>></span></a></td></th>";
+                }
+
+                $("#houseImg").html(houseImg);
+            }
+
+        })
+    }
+
+    function findHouseInfo(houseid) {
+        location.href = "../house/toShowAll?id="+houseid;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.BookingOrder_xcMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.model.BookingOrder_xc" >
+    <id column="bookingorderid" property="bookingorderid" jdbcType="INTEGER" />
+    <result column="starttime" property="starttime" jdbcType="DATE" />
+    <result column="endtime" property="endtime" jdbcType="DATE" />
+    <result column="duepeoplename" property="duepeoplename" jdbcType="VARCHAR" />
+    <result column="duetopeoplephone" property="duetopeoplephone" jdbcType="VARCHAR" />
+    <result column="invoice" property="invoice" jdbcType="INTEGER" />
+    <result column="reneprice" property="reneprice" jdbcType="INTEGER" />
+    <result column="covercharge" property="covercharge" jdbcType="INTEGER" />
+    <result column="totalprices" property="totalprices" jdbcType="INTEGER" />
+    <result column="livingdays" property="livingdays" jdbcType="INTEGER" />
+    <result column="ordernum" property="ordernum" />
+    <result column="houseid" property="houseid" />
+    <result column="userid" property="userid" />
+  </resultMap>
+  <insert id="addBookingOrder" parameterType="com.jk.model.BookingOrder_xc" useGeneratedKeys="true" keyProperty="bookingorderid">
+    insert into t_booking_order (starttime, endtime,
+      duepeoplename, duetopeoplephone, invoice, 
+      reneprice, covercharge, totalprices, 
+      livingdays, ordernum,houseid,userid,ordertime,status)
+    values ( #{starttime}, #{endtime},
+      #{duepeoplename}, #{duetopeoplephone}, #{invoice},
+      #{reneprice}, #{covercharge}, #{totalprices},
+      #{livingdays}, #{ordernum},#{houseid},#{userid},now(),1)
+  </insert>
+
+  <select id="findStartAndEndTime" resultType="com.jk.model.BookingOrder_xc">
+    select * from t_booking_order where houseid = #{houseid} and
+    ( starttime > #{starttime} and  starttime &lt; #{endtime}
+    or endtime > #{starttime} and  endtime &lt; #{endtime} )
+  </select>
+
+  <select id="findBookingorderTotal" resultType="long">
+     select count(*) from t_booking_order where
+    userid = #{userid}
+  </select>
+
+
+
+  <select id="findYuYueById" resultMap="BaseResultMap">
+    SELECT a.duepeoplename,a.duetopeoplephone,a.houseid,a.totalprices,b.realname,b.realphone
+     from t_booking_order a
+     LEFT JOIN t_real_order b
+     ON a.bookingorderid = b.orderid
+        WHERE a.userid = #{userid}
+        limit #{start},#{rows}
+  </select>
+
+</mapper>

@@ -1,0 +1,28 @@
+
+
+<!-- artDialog 要引入的文件 -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/artDialog/common-artdiag.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/artDialog/css/ui-dialog.css">
+<script src="<%=request.getContextPath()%>/js/artDialog/dist/dialog-plus-min.js"></script>
+
+
+
+var add_from = dialog({
+	        title: '标题',//标题
+	        content:getDivByUrl(""),//展示内容，getDivByUrl('跳转页面url')
+	        height:"300px",
+	        width:"240px",
+	        okValue: 'ok',//确定点击按钮名称
+	        ok: function () {//确定按钮绑定函数
+	        	
+	        },
+	        cancelValue: 'no',//取消点击按钮名称
+	        cancel: function () {//取消点击按钮绑定函数
+	           alert("取消操作")
+	        }
+	    });
+		
+	    //调用展示非模态窗口
+	    //add_from.show();
+	    //调用展示模态窗口
+	  add_from.showModal();

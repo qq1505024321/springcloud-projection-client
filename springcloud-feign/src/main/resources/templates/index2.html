@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="成都短租民宿预订、成都短租房、成都酒店式公寓、成都住宿、成都日租房">
+    <meta name="description" content="[民宿短租，就选小蜗]小蜗短租提供成都短租民宿、酒店公寓、宾馆客栈、短租房、日租房、家庭旅馆预订，有厨房有客厅可洗衣做饭、比酒店便宜50%、实拍房源照片真实入住点评、卫生干净安全；是亲子游、周边游、商旅出游住宿的选择，为您提供有人情味的家庭体验。">
+
+
+    <title>成都住宿--短租民宿、酒店公寓、宾馆客栈、短租房、日租房预订_小蜗短租</title><meta content="no-transform " http-equiv="Cache-Control">
+    <meta content="format=html5; url=https://m.xiaozhu.com/" http-equiv="mobile-agent">
+    <link href="../css/xzcss-jquery-uiglobalpagecitysug.css" rel="stylesheet">
+    <script src="../js/tingyun-rum.js"></script>
+    <!-- [if ite IE 8]>
+    <script src="../js/respond34.js"></script>
+    <![endif]-->
+
+
+
+    <!--Jquery-->
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <!--vue-->
+    <script type="text/javascript" src="../vue/vue.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap3/css/bootstrap.css"/>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap3/js/bootstrap.js"></script>
+    <!-- 弹框 -->
+    <script  type="text/javascript" src="../js/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+
+    <link rel="icon" sizes="57x57" href="https://cn.vuejs.org/images/icons/apple-icon-57x57.png">
+    <link href="../css/zpageNav.css" rel="stylesheet" />
+    <!-- <script src="../vue.js"></script>-->
+    <script src="../vue/zpageNav.js"></script>
+
+    <!--  <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+      <script src="../layui/layui.js"></script>
+      <script src="../layui/layui.all.js"></script>-->
+
+    <!-- Bootstrap -->
+    <link href="../js/bootstrap/v3/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+        body {
+            padding: 50px
+        }
+    </style>
+
+
+
+    <style type="text/css">
+
+        .page-bar{
+            margin:40px auto;
+            margin-top: 150px;
+
+        }
+        ul,li{
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style: none
+        }
+        .page-bar li:first-child>a {
+            margin-left: 0px
+        }
+        .page-bar a{
+            border: 1px solid #ddd;
+            text-decoration: none;
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #5D6062;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .page-bar a:hover{
+            background-color: #eee;
+        }
+        .page-bar a.banclick{
+            cursor:not-allowed;
+        }
+        .page-bar .active a{
+            color: #fff;
+            cursor: default;
+            background-color: #E96463;
+            border-color: #E96463;
+        }
+        .page-bar i{
+            font-style:normal;
+            color: #d44950;
+            margin: 0px 4px;
+            font-size: 12px;
+        }
+
+    </style>
+
+
+
+</head>
+
+<body>
+<!--header-->
+
+<link rel="stylesheet" type="text/css" href="../css/xzcss-houseHoverrealNamePopjquer.css">
+<div class="o_mask" id='maskName' style="display:none;"></div>
+<div class="head_wrapper">
+    <a href="javascript:toIndex()">
+        <img src="../image/2.png" width="70px" height="60px">
+    </a>
+    <!--    <span class="list_city" id="suggest_icon4Search">成都<i id="showCitySuggestion" class="icon_tri_down tri_down_f"></i><i id="closeCitySuggestion" class="icon_tri_down icon_tri_up"></i></span>-->
+    <ul class="nav_R nav_commen">
+        <li><a rel="nofollow" title="" class="show-register-box" href="../login/tologin">注册</a></li>
+        <li>&middot;</li>
+        <li><a rel="nofollow" href="../login/tologin" class="logindialog">登录</a></li>
+        <li>&middot;</li>
+        <li class="current">
+
+        </li>
+        <li>
+        </li>
+        <li class="current header_current_last">
+        </li>
+        <li><a rel="nofollow" data-href="http://www.xiaozhu.com/publish" class="btn_free show-register-box" id="Pub_Btn">免费发布房源</a></li>
+    </ul>
+</div>
+
+<form id="search-form">
+    <!--/header-->
+    <div class="city_wrap">
+        <!--city top-->
+        <div class="city_top_box clearfix" id="list_filter">
+            <div class="city_l">
+                <div class="clearfix mb_14">
+                    <div class="city_select city_bg">
+                        <input type="text" th:value="${session.city}" name="houseadderss" placeholder="城市或目的地">
+                        <span id="searchcityd_search" class="icon_searchandremove" style="display: none"><span class="ipt_icon icon_search_s"></span></span>
+                        <div id="suggest" class="ac_results2 marginT1 search_result_box" style="display:none;"></div>
+                        <div class="sug  marginT1 sug4search">
+                            <div class="international" id="international_radios">
+                                <form class="international-form" id="radio_form">
+                                    <lable class="radio-box lable-checked" id="radio_lable_l">
+                                        <span class="radio-style radio-inland-style" id="radio_l" value="inland"></span>
+                                        <input class="el-radio radio-inland" type="radio" name="overseas-inland" checked="" id="radio_inland_real" value="inland">
+                                        <span class="text-span" id="text-inland" value="inland">国内</span>
+                                    </lable>
+                                    <lable class="radio-box" id="radio_lable_r">
+                                        <span class="radio-style radio-overseas-style" id="radio_r" value="abrd"></span>
+                                        <input class="el-radio radio-overseas" type="radio" name="overseas-inland" id="radio_oversaes_real" value="abrd">
+                                        <span class="text-span" id="text-overseas" value="abrd">海外</span>
+                                    </lable>
+                                </form>
+
+                            </div>
+
+                        </div> </div></div>
+
+                <div class="type_bg clearfix" id="rentType">
+                    <h6 class="type_tit1">出租类型</h6>
+                    <ul class="type_list">
+                        <li class="rentType" type="zhengzu">
+                            <input type="radio" name="leasetypes" value="整套" />整套出租
+                        </li>
+                        <li class="rentType" type="danjian">
+                            <input type="radio" name="leasetypes" value="单间" />单间出租
+                        </li>
+                        <li class="rentType" type="renyi">
+                            <input type="radio" name="leasetypes" value="" />任意
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="type_bg clearfix">
+                    <h6 class="type_tit1">关键词</h6>
+                    <div class="select_box">
+                        <input class="ipt_list hiddenTxt " type="text" id="keyword" name="housenam" autocomplete="off" placeholder="房间名，或房东名">
+                        <span id="search_keyword" class="icon_searchandremove"><span class="ipt_icon icon_search_s"></span></span>
+                        <input type="hidden" name="keywordtype" id="keywordtype" value="landmark">
+                        <input type="hidden" name="keywordvalue" id="keywordvalue" value="">
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="city_r">
+
+                <div class="type_bg clearfix">
+                    <h6 class="type_tit">价格</h6>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="dayprice" placeholder="最低价格">至
+                    <input type="text" name="endprice"  placeholder="最高价格">
+                </div>
+
+                <div class="type_bg clearfix" id='space_list'>
+                    <h6 class="type_tit2">户型</h6>
+                    <div class="info_box" id="">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>
+                            <input type="radio" value="1" name="roomnum">一居
+
+                        </label>
+                        <label>
+                            <input type="radio" value="2" name="roomnum" >二居
+
+
+                        </label>
+                        <label>
+                            <input type="radio" value="3" name="roomnum" >三居
+
+                        </label>
+                        <label>
+                            <input type="radio" value="4" name="roomnum">四居
+
+                        </label>
+                        <label>
+                            <input type="radio" value="-1" name="roomnum">其他
+
+                        </label>
+
+                    </div>
+
+
+                </div>
+                <!--
+                               <div class="type_bg clearfix">
+                                  <h6 class="type_tit2">设施</h6>
+                                  <div class="info_box" id="facilities">
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label class=""><input type="checkbox" name="amenities" value="facility_Shower">淋浴</label> <label class=""><input type="checkbox" name="amenities"  value="facility_AirCondition">空调</label> <label class=""><input type="checkbox" name="amenities"  value="facility_Tv">电视</label> <label class=""><input type="checkbox" name="amenities" value="facility_Netword">网络</label> <label class=""><input type="checkbox" name="amenities" value="facility_Kitchen">允许做饭</label> <label class=""><input type="checkbox" name="amenities"  value="facility_Heater">暖气</label> <label class=""><input type="checkbox" name="amenities" value="facility_Privatetoilet">独卫</label>
+                                  </div>
+
+                               </div>-->
+            </div>
+        </div>
+    </div>
+    <div >
+        <button type="button" class="btn btn-success btn-sm btn-block" onclick="queryHouse2()">高级搜索</button>
+    </div>
+</form>    <!--/city top-->
+
+<div class="top_line" style="display:none;"></div>
+<div class="tj_box clearfix" style="display:none;">
+    <div class="select_down" id="select_more">收起筛选条件</div>
+
+
+
+</div>
+<br>
+
+<!--search list-->
+<div >
+    <div class="result_box clearfix">
+        <div > <a href="index.html">小蜗</a>&nbsp;&gt;&nbsp;&nbsp;<font color="red"><td th:text="${session.city}"></td></font>>短租<span class="paddingL10">
+                        超过<span id="searchTotal">30000</span>个房源
+                </span>&nbsp;
+            <span class="col_pink pr20" id="defalut_sort"><a href="javascript:void(0);" onlick="return false;">推荐排序</a></span>
+            <span class="pr20" id="haoping_sort"><a title="好评排序" href="javascript:;">好评排序</a></span>
+            <span id="nodefalut_sort"><a title="点击按价格由低到高排序" href="javascript:;">价格<span class="arrow_top"></span><span class="arrow_down"></span></a></span>
+        </div>
+
+    </div><br>
+    <!--pic list-->
+    <div id="app2">
+        <ul class="pic_list clearfix list_code">
+            <template  v-for="site in sites">
+                <li lodgeunitid="lodgeunit_108126555803" latlng="30.706145,104.102614">
+
+                    <span v-show="isShow">{{site.hoseid}}</span>
+                    <a target="_blank" :href="'../house/toShowAll?id=' + site.hoseid" class="resule_img_a">
+                        <!--客厅图片-->
+                        <span  v-show="isShow">{{site.ketingimgurl}}</span>
+                        <img class="lodgeunitpic" :title="site.houseadderss+'～'+site.housetypes+'～'+site.dayprice+'～('+site.leasetypes+')～'+site.bedtypename" style="width: 520px;height:350px;" data-growing-title="108126555803" :src="site.ketingimgurl"  >
+                    </a>
+                    <div class="favorite  lodge_108126555803 wsc_ico" al="108126555803" title="收藏"></div>
+                    <div class="result_btm_con lodgeunitname" detailurl="http://cd.xiaozhu.com/fangzi/108126555803.html" style="cursor:pointer">
+                        <div>
+                            <a target="_blank" :href="'../house/toShowAll?id=' + site.hoseid" class="resule_img_a">
+                        <span class="result_price">&#165;<i>
+                          {{site.dayprice}}
+                        </i>起/晚</span>
+                            </a>
+                        </div>
+
+                        <span class="result_img">
+                            <a target="_blank" :href="'../house/toShowAll?id=' + site.hoseid" class="resule_img_a">
+                               <!-- 房东头像-->
+                                <span  v-show="isShow">{{site.img}}</span>
+                                <img class="landlordimage" width="42" height="42" :src="site.img"></a>
+                              </span>
+                        <div class="result_intro">
+
+                            <a target="_blank" :href="'../house/toShowAll?id=' + site.hoseid" class="resule_img_a">
+                                 <span class="result_title hiddenTxt">
+                                     <span v-html="site.houseadderss">{{site.houseadderss}}</span>
+                                     ～
+                                       <span v-html="site.housetypes">{{site.housetypes}}</span>
+
+                                      (<span v-html="site.leasetypes">{{site.leasetypes}}</span>)
+                                     ～
+                                       <span v-html="site.bedtypename">{{site.bedtypename}}</span>
+                                 </span>
+                            </a>
+
+                            <em class="hiddenTxt">
+                                <a target="_blank" :href="'../house/toShowAll?id=' + site.hoseid" class="resule_img_a">
+
+                                    <!-- <span v-html="site.leasetypes">{{site.leasetypes}}</span>--> {{site.roomnum}}室{{site.hallnum}}厅{{site.verandanum}}阳台/{{site.bednum}}张床/宜住{{site.suitablenum}}人  <span class="commenthref">
+                                     - 5分/6条点评       </span>
+                                </a>
+                            </em>
+                        </div>
+                    </div>
+                </li>
+            </template>
+
+            <!--  <div class="mapresult_no" id="noLodgeUnitsAtNYN" style="display:none">
+              <em></em>
+              <p>
+              <span>没有符合条件的房间</span>
+                  建议您减少或更改一些查询条件重新搜索
+              </p>
+              </div>-->
+        </ul>
+
+        <!-- pagination start-->
+        <div class="wrap" id="wrap">
+            <zpagenav v-bind:page="page" v-bind:page-size="pageSize" v-bind:total="total"
+                      v-bind:max-page="maxPage"  v-on:pagehandler="pageHandler">
+            </zpagenav>
+        </div>
+        <!-- pagination end-->
+
+        <!--    &lt;!&ndash;分页&ndash;&gt;
+           <div class="page-bar">
+                <ul>
+                    <li v-if="cur>1"><a v-on:click="cur&#45;&#45;,pageClick()">上一页</a></li>
+                    <li v-if="cur==1"><a class="banclick">上一页</a></li>
+                    <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
+                        <a v-on:click="btnClick(index)">{{ index }}</a>
+                    </li>
+                    <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
+                    <li v-if="cur == all"><a class="banclick">下一页</a></li>
+                    <li><a>共<i>{{all}}</i>页</a></li>
+                </ul>
+            </div>-->
+
+        <!-- <div class="pagination_v2 pb0_vou"><span class="active_link">1</span><a target="_self" href="javascript:;">2</a><a target="_self" href="javascript:;">3</a><a target="_self" href="javascript:;">4</a><a target="_self" href="javascript:;">5</a><a class="font_st" target="_self" href="javascript:;">&gt;</a></div> <div class="list_adpic" style="background-color:#18B8C1;">
+            <a href="fk.html" target="_blank" style="cursor:auto"><img lazy_src="https://image.xiaozhustatic1.com/00,500,100/21,0,21,29557,500,100,b3c058ff.jpg"></a>
+        </div>   -->
+    </div>
+</div>
+
+
+
+<div class="result_foot clearfix">
+    <dl class="link_dl">
+        <dt>城市导航</dt>
+        <dd>
+            <a target="_blank" href="index1.html">北京短租房</a>
+            <a target="_blank" href="index6.html">上海短租房</a>
+            <a target="_blank" href="index7.html">南京短租房</a>
+            <a target="_blank" href="">成都短租房</a>
+            <a target="_blank" href="index8.html">广州短租房</a>
+            <a target="_blank" href="index4.html">重庆短租房</a>
+            <a target="_blank" href="index9.html">武汉短租房</a>
+            <a target="_blank" href="index10.html">大连短租房</a>
+            <a target="_blank" href="index11.html">三亚短租房</a>
+            <a target="_blank" href="index12.html">丽江短租房</a>
+            <a target="_blank" href="index13.html">天津短租房</a>
+            <a target="_blank" href="index14.html">香港短租房</a>
+            <a target="_blank" href="index15.html">长沙短租房</a>
+            <a target="_blank" href="index16.html">无锡短租房</a>
+            <a target="_blank" href="index17.html">昆明短租房</a>
+            <a target="_blank" href="index18.html">济南短租房</a>
+            <a target="_blank" href="index19.html">厦门短租房</a>
+            <a target="_blank" href="index3.html">青岛短租房</a>
+            <a target="_blank" href="index20.html">郑州短租房</a>
+            <a target="_blank" href="index21.html">西安短租房</a>
+            <a target="_blank" href="index22.html">杭州短租房</a>
+            <a target="_blank" href="index23.html">深圳短租房</a>
+            <a target="_blank" href="index24.html">沈阳短租房</a>
+            <a target="_blank" href="index25.html">苏州短租房</a>
+        </dd>
+    </dl>
+    <dl class="link_dl">
+    </dl>
+    <div class="foot_btm">许可证号：京ICP证140510号 &nbsp;&nbsp; <a href="javascript:;" |="" name="mt8SMvYyRDI92b06nuDs8dPFapllCJYidqhM1WlOoGRZ9DWpbo" rel="nofollow" target="_blank">安全联盟</a> &nbsp;&nbsp;北京快跑信息科技有限公司<span style="display:none"> &nbsp;&nbsp;地址：北京市海淀区知春路56号 &nbsp;&nbsp;电话：010-62961978</span></div>
+    <div style="margin:0 auto;color:#bdc3c7;">
+        <a target="_blank" href="javascript:;" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../picture/govRecord_icon.png"><p style="display:inline-block;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#bdc3c7;">京公网安备 11010802020380号</p></a>
+        &nbsp;&nbsp; 违法和不良信息举报电话：4000107890转6  &nbsp;&nbsp; 举报邮箱：jubao@xiaozhu.com
+    </div>
+
+
+    <input type="hidden" name="actionName" id="actionName" value="Front_Search">
+    <input type="hidden" name="xz_srf_token" id="xz_srf_token" value="2982b726deea1617eb82514eb68e4f6d">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/xzcss-jquery.mCustomScrollbarnyr1.css">
+
+    <script type="text/javascript" src="../js/xzjs-Footer_cd.xiaozhu.com.js"></script>
+    <!--
+    <script type="text/javascript" src="../js/xzjs-Footer1_cd.xiaozhu.com.js"></script>
+    <script type="text/javascript" src="../js/xzjs-Footer2_cd.xiaozhu.com.js"></script>
+    -->
+    <script type="text/javascript" src="../js/lazyload.js"></script>
+    <script type="text/javascript" src="../js/xzim4-xiaozhu_xiaozhu.com.js" id="webimSource"></script>            <!--/link-->
+</div>
+<!--search list-->
+</div>
+
+</div>    <div class="dropDiv" style='display:none'>
+</div>
+
+</div>
+<div class="mask" style="display:none;"></div>
+<div class="mask1" id="pop_springFestivalMask">
+    <div class="pop_img_box">
+        <img src="../picture/pop_springFestival.png" width="100%" id="pop_springFestivalImg">
+        <span class="close"></span>
+    </div>
+</div>
+
+
+<div id="addFavoritePop" style="display:none;"></div>
+<div id="addFavoriteGroupPop" style="display:none;">
+
+    <div class="collect_mask" id="Pop_mask"></div>
+    <div class="pop_520" id="addGroupPop">
+        <h5>新建收藏分组</h5>
+        <div class="pop_520_main">
+            <div class="group_item">
+                <span>名称：</span>
+                <input type="text" placeholder="填写收藏分组名称" maxlength="16" id="groupName" value="">
+                <p class="tips_msg"><i></i></p>
+            </div>
+            <div class="group_item">
+                <span>描述：<em>（选填）</em></span>
+                <textarea placeholder="可简单填写对分组的描述" maxlength="200" id="groupDesc"></textarea>
+            </div>
+            <div class="group_item">
+                <span>设置成私密：</span>
+                <label><input type="radio" name="groupPrivate" value="1"><em></em><span>仅自己可以查看这个收藏分组</span></label>
+                <label><input type="radio" name="groupPrivate" value="0" checked=""><em></em><span>所有人都可以查看这个收藏分组</span></label>
+            </div>
+        </div>
+        <div class="btn_group">
+            <a href="#ongo" class="save_btn" id="addGroupSave">保存</a>
+            <a href="#ongo" class="cancel_btn" id="addGroupCancel">取消</a>
+        </div>
+        <input type="hidden" id="favoriteGroupId" value="">
+    </div></div>
+<script type="text/javascript" src="../js/xzjs-Front_Search_cd.xiaozhu.com.js"></script>
+</div>
+
+<script type="text/javascript">
+
+    $(function(){
+        queryHouse2();
+    })
+
+    var vm = new Vue({
+        el: '#app2',
+        data: {
+            page: 1,  //显示的是哪一页
+            pageSize: 9, //每一页显示的数据条数
+            total: 0, //记录总数
+            maxPage:0,  //最大页数
+            sites:[],
+            isShow:false
+        },
+        methods: {
+            pageHandler: function (page) {
+                this.page = page;
+                queryHouse2();
+            }
+        },
+        created:function(){
+            //created  表示页面加载完毕，立即执行
+            this.pageHandler(1);
+        }
+    });
+
+    function queryHouse2(){
+
+        var formval = $("#search-form").serialize();
+
+        $.ajax({
+            url:"../house/queryHouse2?page="+vm.page+"&pageSize="+vm.pageSize,
+            data:formval,
+            type:"post",
+            success:function(res) {
+                if(res.msg=="success"){
+                    vm.total= res.total, //记录总数
+                        vm.maxPage=res.maxPage,  //最大页数
+                        vm.sites=res.rows
+
+                }
+
+            },
+            error:function(){
+                alert("后台错误");
+            }
+        });
+
+    }
+
+</script>
+
+</body>
+<!-- Google Tag Manager -->
+<!-- End Google Tag Manager --></html>
